@@ -9,8 +9,8 @@ This class deals with the user's constant problem, to save pretty figures to dis
 The object is created by calling
 
 ```matlab
-obj = PrintFigure(FigureHandle)
-obj = PrintFigure()
+obj = PrintFigure(FigureHandle);
+obj = PrintFigure();
 ```
 
 where `FigureHandle` denotes the handle to the figure which is to be formatted and printed.  
@@ -44,9 +44,12 @@ You can omit the argument which triggers the class to use the current figure (by
 ## Applying a Layout Profile
 
 ```matlab
-obj.Profile = 'paper'        % this is the default
-obj.Profile = 'presentation'
-obj.Profile = 'myprofile'
+obj.Profile = 'paper';        % this is the default
+obj.Profile = 'presentation';
+obj.Profile = 'myprofile';
+...
+obj.Profile = 'help';
+obj.Profile = [];
 ```
 
 **json parser von basti**
@@ -54,11 +57,11 @@ obj.Profile = 'myprofile'
 ## Changing the File Format for Printing
 
 ```matlab
-obj.Format = 'pdf'   % this is the default
-obj.Format = 'epsc'
-obj.Format = 'png'
+obj.Format = 'pdf';   % this is the default
+obj.Format = 'epsc';
+obj.Format = 'png';
 ...
-obj.Format = 'help'
+obj.Format = 'help';
 obj.Format = [];
 ```
 
@@ -68,14 +71,14 @@ Typically, when printing figures to disk while using the `'pdf'` format, MATLAB 
 ## Applying the Recently Introduced Parula Colormap
 
 ```matlab
-obj.applyParulaMap
+obj.applyParulaMap;
 ```
 
 ## Printing the Figure to Disk
 
 ```matlab
-obj.print(filename)
-obj.print(filename,'nofix')
+obj.print(filename);
+obj.print(filename,'nofix');
 ```
 
 When the file format is one of `{'eps','epsc','eps2','epsc2'}` the created vector graphic is enhanced with the [fixPSlinestyle](http://www.mathworks.com/matlabcentral/fileexchange/17928-fixpslinestyle) function per default. **What does it do?** If this is not intended it can be turned off by passing `'nofix'` as second argument.
@@ -83,18 +86,18 @@ When the file format is one of `{'eps','epsc','eps2','epsc2'}` the created vecto
 ## Closing the Figure
 
 ```matlab
-obj.close
+obj.close;
 ```
 
 
 ### Releasing the Figure
 
 ```matlab
-obj.release
+obj.release;
 ```
 
 ### Locking the Figure
 
 ```matlab
-obj.lock
+obj.lock;
 ```

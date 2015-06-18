@@ -16,7 +16,7 @@ function [] = close(self)
 % 
 
 
-if ishandle(self.HandleFigure),
+if isvalid(self.HandleFigure),
     delete(self.HandleFigure);
 end
 

@@ -96,7 +96,7 @@ end
 methods
     function self = PrintFigure(hFigure)
         if nargin,
-            if ishandle(hFigure),
+            if isgraphics(hFigure,'figure') && isvalid(hFigure),
                 self.HandleFigure = hFigure;
             else
                 error(['Argument not recognized! Pass a valid handle to ',...
@@ -124,7 +124,7 @@ methods
     close(self);
     
     function delete(self)
-        if ishandle(self.HandleFigure),
+        if isvalid(self.HandleFigure),
             set(self.HandleFigure,'CloseRequestFcn','closereq');
         end
     end

@@ -150,7 +150,7 @@ methods
         else
             assert(ismember(szProfile,caszProfileNames),sprintf(['Make sure to use ',...
                 'an available profile for formatting the figure!\n',...
-                'See obj.Profile = ''help''; for a list of available profiles']));
+                'See obj.Profile = ''help'' for a list of available profiles']));
             
             self.Profile = szProfile;
             
@@ -196,19 +196,52 @@ end
 methods (Access = private)
     getChildrenHandles(self);
     setPropertyValues(self);
-    CloseReqFun(self);
     fixPSlinestyle(varargin);
-    printdefaults(varargin)
     
-    stProps      = parsejson(szJsonString);
-    stFiles      = listFiles(szCurDir,szFileMask,iRecursionDepth);
-    Array        = cell2array(caCell);
-    map          = paruly(n);
-    caszOutNames = removeFileparts(caszInNames);
+    stProps = parsejson(szJsonString);
+    stFiles = listFiles(szCurDir,szFileMask,iRecursionDepth);
+    map     = paruly(n);
 end
 
 
 end
+
+
+
+
+
+function printdefaults(varargin)
+
+
+szDefaultsString = sprintf('''%s'' Options:\n{''%s''} |',varargin{1},varargin{2});
+
+for aaArg = 3:nargin,
+    szDefaultsString = sprintf('%s ''%s'' |',szDefaultsString,varargin{aaArg});
+    
+    if ~mod(aaArg,9),
+        szDefaultsString = sprintf('%s\n',szDefaultsString);
+    end
+end
+szDefaultsString = [szDefaultsString(1:end-1), '\n'];
+
+fprintf(szDefaultsString);
+
+end
+
+
+function [caszOutNames] = removeFileparts(caszInNames)
+
+numNames = length(caszInNames);
+
+caszOutNames = cell(size(caszInNames));
+for aaName = 1:numNames,
+    [dummy,szName] = fileparts(caszInNames{aaName});
+    
+    caszOutNames{aaName} = szName;
+end
+
+end
+
 
 
 

@@ -19,7 +19,16 @@ function [] = lock(self)
 
 set(self.HandleFigure,'CloseRequestFcn',@CloseReqFun);
 
+end
 
+
+
+function [] = CloseReqFun(handleobj,callbackdata)
+
+warning(sprintf(['The figure cannot be closed until you ',...
+    'delete this object or call ''obj.close''.\n',...
+    'However, ''delete(handle_to_your_figure)'' will always work...'])); %#ok<SPWRN>
+end
 
 
 

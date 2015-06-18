@@ -197,6 +197,7 @@ methods (Access = private)
     setPropertyValues(self);
     CloseReqFun(self);
     fixPSlinestyle(varargin);
+    printdefaults(varargin)
     
     stProps      = parsejson(szJsonString);
     stFiles      = listFiles(szCurDir,szFileMask,iRecursionDepth);

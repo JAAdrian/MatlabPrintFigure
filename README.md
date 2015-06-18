@@ -16,13 +16,40 @@ obj = PrintFigure()
 where `FigureHandle` denotes the handle to the figure which is to be formatted and printed.  
 You can omit the argument which triggers the class to use the current figure (by using `gcf` internally).
 
+## Content of a Layout Profile
+
+```json
+{
+    "AxesFontSize":         10,
+    "AxesFontName":         "Times",
+    "AxisLineWidth":        0.75,
+    "XColor":               [0.3,0.3,0.3],
+    "YColor":               [0.3,0.3,0.3],
+    "TickLength":           [0.02,0.02],
+    "TickDir":              "out",
+    "Box":                  "off",
+    "XGrid":                "off",
+    "YGrid":                "on",
+    "PlotLineWidth":        1,
+    "MarkerSize":           8,
+    "LabelFontName":        "Times",
+    "LabelFontSize":        14,
+    "Interpreter":          "tex",
+    "TickLabelInterpreter": "tex",
+    "PaperPosition":        [0,0,21,13],
+    "LegendEdgeColor":      [0.3,0.3,0.3]
+}
+```
+
 ## Applying a Layout Profile
 
 ```matlab
-obj.Type = 'paper'        % this is the default
-obj.Type = 'presentation'
-obj.Type = 'myprofile'
+obj.Profile = 'paper'        % this is the default
+obj.Profile = 'presentation'
+obj.Profile = 'myprofile'
 ```
+
+**json parser von basti**
 
 ## Changing the File Format for Printing
 
@@ -30,8 +57,12 @@ obj.Type = 'myprofile'
 obj.Format = 'pdf'   % this is the default
 obj.Format = 'epsc'
 obj.Format = 'png'
+...
+obj.Format = 'help'
+obj.Format = [];
 ```
 
+**Trigger help, supported formats**  
 Typically, when printing figures to disk while using the `'pdf'` format, MATLAB prints a blank DIN A4 page and places the figure somewhere on it. This behaviour is fixed in this implementation.
 
 ## Applying the Recently Introduced Parula Colormap

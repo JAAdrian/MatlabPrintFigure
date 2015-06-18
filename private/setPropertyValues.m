@@ -17,7 +17,7 @@ function [] = setPropertyValues(self)
 
 
 
-szProfileFile = fullfile(self.ClassFolder,'profiles',[self.Type, '.json']);
+szProfileFile = fullfile(self.ClassFolder,'profiles',[self.Profile, '.json']);
 
 stProfile = parsejson(fileread(szProfileFile));
 

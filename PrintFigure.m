@@ -55,7 +55,7 @@ properties (Constant, Hidden)
     
     caszBadPlotTypes = {'histogram','image'};
     
-    DefaultType = 'paper';
+    DefaultProfile = 'paper';
     
     DefaultPaperUnits    = 'centimeters';
     DefaultPaperPosition = [0 0 21 13];
@@ -86,7 +86,7 @@ end
 
 
 properties (Access = public)
-    Type;
+    Profile;
     Format     = 'pdf';
     Resolution = 200;
 end
@@ -111,7 +111,7 @@ methods
         % get all handles
         getChildrenHandles(self)
         
-        self.Type = self.DefaultType;
+        self.Profile = self.DefaultProfile;
     end
 
     update(self);
@@ -133,26 +133,26 @@ methods
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%% setter/getter methods %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [] = set.Type(self,szType)
+    function [] = set.Profile(self,szProfile)
         stProfileFiles = listFiles(fullfile(self.ClassFolder,'profiles'),...
             '*.json',0); %#ok<MCSUP>
         caszProfileNames = {stProfileFiles.name};
         
         caszProfileNames = removeFileparts(caszProfileNames);
         
-        if strcmpi(szType,'help') || isempty(szType),
-            caIdx = strfind(caszProfileNames,self.DefaultType);
+        if strcmpi(szProfile,'help') || isempty(szProfile),
+            caIdx = strfind(caszProfileNames,self.DefaultProfile);
             idx   = find(~cellfun(@isempty,caIdx));
             caszProfileNames = [caszProfileNames(idx) caszProfileNames];
             caszProfileNames(idx+1) = [];
             
-            printdefaults('Type',caszProfileNames{:});
+            printdefaults('Profile',caszProfileNames{:});
         else
-            assert(ismember(szType,caszProfileNames),sprintf(['Make sure to use ',...
-                'an available type profile for formatting the figure!\n',...
-                'See obj.Type = ''help''; for a list of available type profiles']));
+            assert(ismember(szProfile,caszProfileNames),sprintf(['Make sure to use ',...
+                'an available profile for formatting the figure!\n',...
+                'See obj.Profile = ''help''; for a list of available profiles']));
             
-            self.Type = szType;
+            self.Profile = szProfile;
             
             update(self);
         end

@@ -48,7 +48,7 @@ obj.Profile = 'paper';        % this is the default
 obj.Profile = 'presentation';
 obj.Profile = 'myprofile';
 ...
-obj.Profile = 'help';
+obj.Profile = 'help'; % or
 obj.Profile = [];
 ```
 
@@ -61,7 +61,7 @@ obj.Format = 'pdf';   % this is the default
 obj.Format = 'epsc';
 obj.Format = 'png';
 ...
-obj.Format = 'help';
+obj.Format = 'help'; % or
 obj.Format = [];
 ```
 
@@ -90,6 +90,19 @@ obj.print(filename,'nofix');
 ```
 
 When the file format is one of `{'eps','epsc','eps2','epsc2'}` the created vector graphic is enhanced with the [fixPSlinestyle](http://www.mathworks.com/matlabcentral/fileexchange/17928-fixpslinestyle) function per default. **What does it do?** If this is not intended it can be turned off by passing `'nofix'` as second argument.
+
+## Saving the Object incl. Print Data to Disk
+
+```matlab
+obj.saveFigure(filename);
+```
+
+## Loading a Saved Figure Object
+
+```matlab
+load filename.mat; % this loads a 'FigObj' object per default
+FigObj.LoadFigure;
+```
 
 ## Closing the Figure
 

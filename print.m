@@ -1,4 +1,4 @@
-function [] = print(self,szFilename)
+function [] = print(self,szFilename,szNoFix)
 %PRINT2 <purpose in one line!>
 % -------------------------------------------------------------------------
 % <Detailed description of the function>
@@ -15,6 +15,12 @@ function [] = print(self,szFilename)
 % Updated:  <>
 % 
 
+if nargin < 3 || isempty(szNoFix),
+    szNoFix = false;
+end
+if nargin < 2 || isempty(szFilename),
+    error('Pass a filename for the figure to be printed!');
+end
 
 
 if ismember(self.Format,self.caszPossibleFormatsBitmap),
@@ -29,13 +35,13 @@ else
         sprintf('-d%s',self.Format),...
         szFilename);
     
-    % If the format was eps or epsc: fix the linestyles
-    [szPath,szFilename,szExt] = fileparts(szFilename);
-    if isempty(szExt),
-        szExt = '.eps';
-    end
-    
-    if ismember(self.Format,{'eps','epsc','eps2','epsc2'}),
+    if strcmpi(szNoFix,'nofix') && ismember(self.Format,{'eps','epsc','eps2','epsc2'}),
+        % If the format was eps or epsc: fix the linestyles
+        [szPath,szFilename,szExt] = fileparts(szFilename);
+        if isempty(szExt),
+            szExt = '.eps';
+        end
+        
         fixPSlinestyle(fullfile(szPath,[szFilename,szExt]));
     end
 end

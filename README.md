@@ -68,6 +68,14 @@ obj.Format = [];
 **Trigger help, supported formats**  
 Typically, when printing figures to disk while using the `'pdf'` format, MATLAB prints a blank DIN A4 page and places the figure somewhere on it. This behaviour is fixed in this implementation.
 
+## Changing the Resolution when Printing Bitmap Graphics
+
+```matlab
+obj.Resolution = 200; % this is the default
+```
+
+in dpi.
+
 ## Applying the Recently Introduced Parula Colormap
 
 ```matlab

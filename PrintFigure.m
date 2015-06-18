@@ -177,7 +177,8 @@ methods
         if iResolution > 600,
             warning('Resolutions of >600 might lead to very large filesizes!');
         end
-        assert(iResolution >=0, 'Pass a non-negative value for the resolution!');
+        assert(iResolution >0, 'Pass a value greater than zero for the resolution!');
+        assert(rem(iResolution,1) == 0, 'Pass an integer value for the resolution!');
         
         self.Resolution = iResolution;
     end

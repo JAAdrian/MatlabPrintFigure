@@ -55,7 +55,7 @@ properties (Constant, Hidden)
     
     caszBadPlotTypes = {'histogram','image'};
     
-    DefaultProfile = 'paper';
+    DefaultProfile = 'default';
     
     DefaultPaperUnits    = 'centimeters';
     DefaultPaperPosition = [0 0 21 13];

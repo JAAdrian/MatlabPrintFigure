@@ -16,11 +16,12 @@ function [] = setPropertyValues(self)
 % 
 
 
+% set defaults if the custom profile lacks some properties
+self.FigureProperties = readProfile(self.ClassFolder,self.DefaultProfile);
 
-szProfileFile = fullfile(self.ClassFolder,'profiles',[self.Profile, '.json']);
 
-stProfile = parsejson(fileread(szProfileFile));
 
+stProfile = readProfile(self.ClassFolder,self.Profile);
 
 caszFieldnames = fieldnames(stProfile);
 numFields      = length(caszFieldnames);
@@ -50,6 +51,15 @@ if ~isfield(self.FigureProperties,'PaperPosition'),
     self.FigureProperties.PaperPosition = self.DefaultPaperPosition;
 end
 
+end
+
+
+function [stProfile] = readProfile(szPath,szProfile)
+
+szProfileFile = fullfile(szPath,'profiles',[szProfile, '.json']);
+
+stProfile = parsejson(fileread(szProfileFile));
+end
 
 
 

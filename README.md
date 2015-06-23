@@ -18,6 +18,15 @@ You can omit the argument which triggers the class to use the current figure (by
 
 ## Content of a Layout Profile
 
+Current content of the default profile below.
+
+If new properties should be applied,
+1. add the property in the `default.json` file
+2. add the property in `update.m`
+
+This is a less-than-ideal solution and must be improved in the process of development.
+
+Content of `default.json`:
 ```json
 {
     "AxesFontSize":         10,
@@ -44,9 +53,10 @@ You can omit the argument which triggers the class to use the current figure (by
 ## Applying a Layout Profile
 
 ```matlab
-obj.Profile = 'paper';        % this is the default
+obj.Profile = 'default';        % this is the default
+obj.Profile = 'paper';
 obj.Profile = 'presentation';
-obj.Profile = 'myprofile';
+obj.Profile = 'mycustomprofile';
 ...
 obj.Profile = 'help'; % or
 obj.Profile = [];
@@ -78,6 +88,8 @@ in dpi.
 
 ## Applying the Recently Introduced Parula Colormap
 
+In MATLAB versions less than R2014b the old and ugly colormap is used per default. To change the colormap to the recently introduced *Parula* map you can call the following method:
+
 ```matlab
 obj.applyParulaMap;
 ```
@@ -89,7 +101,7 @@ obj.print(filename);
 obj.print(filename,'nofix');
 ```
 
-When the file format is one of `{'eps','epsc','eps2','epsc2'}` the created vector graphic is enhanced with the [fixPSlinestyle](http://www.mathworks.com/matlabcentral/fileexchange/17928-fixpslinestyle) function per default. **What does it do?** If this is not intended it can be turned off by passing `'nofix'` as second argument.
+When the file format is one of `{'eps','epsc','eps2','epsc2'}` the created vector graphic is enhanced with the [fixPSlinestyle](http://www.mathworks.com/matlabcentral/fileexchange/17928-fixpslinestyle) function per default. **What does it do?** If this is not intended it can be disabled by passing `'nofix'` as second argument.
 
 ## Saving the Object incl. Print Data to Disk
 
@@ -122,3 +134,10 @@ obj.release;
 ```matlab
 obj.lock;
 ```
+
+
+# Todo Notes
+
+- [ ] improve the handling of new properties
+- [ ] improve the documentation (comments and help for each function)
+ 

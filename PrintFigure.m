@@ -96,7 +96,7 @@ end
 methods
     function self = PrintFigure(hFigure)
         if nargin,
-            if isgraphics(hFigure,'figure') && isvalid(hFigure),
+            if isgraphics(hFigure,'figure'),
                 self.HandleFigure = hFigure;
             else
                 error(['Argument not recognized! Pass a valid handle to ',...

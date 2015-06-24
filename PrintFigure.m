@@ -124,7 +124,7 @@ methods
     close(self);
     
     function delete(self)
-        if ~isa(self.HandleFigure,'double') && isvalid(self.HandleFigure),
+        if isgraphics(self.HandleFigure,'figure'),
             set(self.HandleFigure,'CloseRequestFcn','closereq');
         end
     end

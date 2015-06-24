@@ -17,7 +17,7 @@ function [] = release(self)
 
 
 
-if isvalid(self.HandleFigure),
+if isgraphics(self.HandleFigure,'figure'),
     set(self.HandleFigure,'CloseRequestFcn','closereq');
 end
 

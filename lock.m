@@ -1,9 +1,8 @@
 function [] = lock(self)
-%LOCK <purpose in one line!>
+%Locks the figure to prevent it from being deleted
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = lock(input)
+% Usage: [] = lock(self)
 % 
 %   Input:   ---------
 % 

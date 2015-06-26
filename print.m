@@ -1,9 +1,8 @@
 function [] = print(self,szFilename,szNoFix)
-%PRINT2 <purpose in one line!>
+%Prints the figure to disk
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = print(input)
+% Usage: [] = print(self,szFilename,szNoFix)
 % 
 %   Input:   ---------
 % 

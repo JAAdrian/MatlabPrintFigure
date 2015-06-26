@@ -1,9 +1,8 @@
 function [] = applyParulaMap(self)
-%APPLYPARULAMAP <purpose in one line!>
+%Apply the Parula colormap to the figure
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = applyParulaMap(input)
+% Usage: [] = applyParulaMap(self)
 % 
 %   Input:   ---------
 % 

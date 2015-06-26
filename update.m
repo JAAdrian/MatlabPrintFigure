@@ -1,9 +1,8 @@
 function [] = update(self)
-%UPDATE <purpose in one line!>
+%Apply all properties of the profile to the figure
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = update(input)
+% Usage: [] = update(self)
 % 
 %   Input:   ---------
 % 

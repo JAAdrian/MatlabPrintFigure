@@ -1,9 +1,8 @@
 function [] = release(self)
-%RELEASE2 <purpose in one line!>
+%Releases the figure to be able to be closed
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = release(input)
+% Usage: [] = release(self)
 % 
 %   Input:   ---------
 % 

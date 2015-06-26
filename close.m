@@ -1,9 +1,8 @@
 function [] = close(self)
-%CLOSE2 <purpose in one line!>
+%Closes the figure
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = close(input)
+% Usage: [] = close(self)
 % 
 %   Input:   ---------
 % 

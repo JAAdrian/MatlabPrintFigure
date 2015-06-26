@@ -1,7 +1,6 @@
 classdef PrintFigure < handle
-%PRINTFIGURE <purpose in one line!>
+%PrintFigure A Class for Easy and Reproducible Figure Formatting And Printing in MATLAB
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
 % PrintFigure Properties:
 %	propA - <description>
@@ -12,8 +11,7 @@ classdef PrintFigure < handle
 %	doThat - <description>
 % 
 % Author :  J.-A. Adrian (JA) <jens-alrik.adrian AT jade-hs.de>
-% Date   :  15-Jun-2015 17:54:58
-% Updated:  <>
+% Date   :  26-Jun-2015 17:54:58
 % 
 
 
@@ -81,13 +79,28 @@ end
 
 
 properties (SetAccess = private, GetAccess = public)
+%HandleFigure Handle to the desired Figure
+    % Handle to the figure which has either been passed to the constructor
+    % or acquired by 'gcf'
     HandleFigure;
 end
 
 
 properties (Access = public)
+%Profile Profile of the Format Settings which are to be Applied to the Figure
+    % String of the profile's filename (e.g. 'paper'). The profile must be
+    % located in the 'profiles' directory in the class as a json file. See
+    % README.md for further reading.
     Profile;
+    
+%Format File Format in which the Figure should be Saved
+    % String containing the file format (without the dot!). Defaults to
+    % 'pdf'. See README.md for further reading.
     Format     = 'pdf';
+    
+%Resolution Resolution of the File if a Bitmap Graphic is Desired
+    % Integer for the resolution of a bitmap graphic in dpi (dots per
+    % inch). See README.md for further reading.
     Resolution = 200;
 end
 
@@ -95,6 +108,8 @@ end
 
 methods
     function self = PrintFigure(hFigure)
+        % PrintFigure Instantiate the object for the PrintFigure class
+        
         if nargin,
             if isgraphics(hFigure,'figure'),
                 self.HandleFigure = hFigure;
@@ -106,11 +121,13 @@ methods
             self.HandleFigure = gcf;
         end
 
+        % lock the figure to prevent it from being closed
         lock(self);
         
         % get all handles
         getChildrenHandles(self)
         
+        % apply default profile right away
         self.Profile = self.DefaultProfile;
     end
 

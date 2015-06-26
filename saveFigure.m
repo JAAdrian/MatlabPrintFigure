@@ -1,9 +1,8 @@
 function [] = saveFigure(self,szFilename)
-%SAVEFIGURE <purpose in one line!>
+%Save the figure and the object in the current state to file
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = saveFigure(input)
+% Usage: [] = saveFigure(self,szFilename)
 % 
 %   Input:   ---------
 % 

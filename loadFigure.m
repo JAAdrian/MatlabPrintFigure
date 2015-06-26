@@ -1,9 +1,8 @@
 function [] = loadFigure(self)
-%LOADFIGURE <purpose in one line!>
+%Load a figure in the state in which it was saved
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = loadFigure(input)
+% Usage: [] = loadFigure(self)
 % 
 %   Input:   ---------
 % 

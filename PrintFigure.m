@@ -113,6 +113,11 @@ methods
         if nargin,
             if isgraphics(hFigure,'figure'),
                 self.HandleFigure = hFigure;
+                
+                childUserData = get(get(hFigure,'Children'),'UserData');
+                if iscell(childUserData) && isequal(childUserData{1},'boxplot'),
+                    error('Boxplots are not yet supported');
+                end
             else
                 error(['Argument not recognized! Pass a valid handle to ',...
                     'an existing figure']);

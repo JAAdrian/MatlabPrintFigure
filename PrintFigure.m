@@ -102,6 +102,8 @@ properties (Access = public)
     % Integer for the resolution of a bitmap graphic in dpi (dots per
     % inch). See README.md for further reading.
     Resolution = 200;
+    
+    Renderer;
 end
 
 
@@ -128,6 +130,9 @@ methods
 
         % lock the figure to prevent it from being closed
         lock(self);
+
+        % get the current renderer
+        setRenderer(self);
         
         % get all handles
         getChildrenHandles(self)
@@ -191,8 +196,9 @@ methods
                 'See obj.Format = ''help'' for a list of supported formats']));
             
             self.Format = szFormat;
+            
+            setRenderer(self);
         end
-        
     end
     
     function [] = set.Resolution(self,iResolution)
@@ -204,6 +210,22 @@ methods
         
         self.Resolution = iResolution;
     end
+    
+    function [] = set.Renderer(self,szRenderer)
+        assert(...
+            isa(szRenderer,'char'),...
+            ['Pass a string containing either ',...
+            '''opengl'' or ''painters''']);
+        
+        if ~strcmpi(szRenderer,{'opengl','painters'}),
+            warning(sprintf(['Renderer not recognized. ',...
+                'Choose an option from either ''opengl'' or ''painters''. \n',...
+                'Keeping previous property value.'])); %#ok<SPWRN>
+        else
+            self.Renderer = lower(szRenderer);
+        end
+    end
+    
     
     function [szFolder] = get.ClassFolder(self) %#ok<MANU>
         szFolder = which(mfilename);

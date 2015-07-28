@@ -279,7 +279,7 @@ numNames = length(caszInNames);
 
 caszOutNames = cell(size(caszInNames));
 for aaName = 1:numNames,
-    [dummy,szName] = fileparts(caszInNames{aaName});
+    [dummy,szName] = fileparts(caszInNames{aaName}); %#ok<ASGLU>
     
     caszOutNames{aaName} = szName;
 end

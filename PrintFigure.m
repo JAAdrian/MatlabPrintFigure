@@ -195,7 +195,7 @@ methods
                 'a supported format for printing!\n',...
                 'See obj.Format = ''help'' for a list of supported formats']));
             
-            self.Format = szFormat;
+            self.Format = lower(szFormat);
             
             setRenderer(self);
         end

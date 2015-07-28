@@ -117,7 +117,7 @@ methods
                 self.HandleFigure = hFigure;
                 
                 childUserData = get(get(hFigure,'Children'),'UserData');
-                if iscell(childUserData) && isequal(childUserData{1},'boxplot'),
+                if iscell(childUserData) && strcmp(childUserData{1},'boxplot'),
                     error('Boxplots are not yet supported');
                 end
             else

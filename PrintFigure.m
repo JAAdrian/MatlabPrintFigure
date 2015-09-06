@@ -139,7 +139,6 @@ methods
         getChildrenHandles(self)
     end
 
-    update(self);
     applyParulaMap(self);
     print(self,szFilename);
     saveFigure(self,szFilename);

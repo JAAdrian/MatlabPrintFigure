@@ -1,8 +1,8 @@
-function [] = applyParulaMap(self)
+function [] = parula(self)
 %Apply the Parula colormap to the figure
 % -------------------------------------------------------------------------
 % 
-% Usage: [] = applyParulaMap(self)
+% Usage: [] = parula(self)
 % 
 %   Input:   ---------
 % 
@@ -61,4 +61,4 @@ end
 % ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 % THE POSSIBILITY OF SUCH DAMAGE.
 
-% End of file: applyParulaMap.m
+% End of file: parula.m

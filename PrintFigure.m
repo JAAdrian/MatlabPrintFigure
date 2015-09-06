@@ -139,7 +139,8 @@ methods
         getChildrenHandles(self)
     end
 
-    applyParulaMap(self);
+    parula(self);
+    viridis(self);
     print(self,szFilename,szNoFix);
     saveFigure(self,szFilename);
     loadFigure(self);

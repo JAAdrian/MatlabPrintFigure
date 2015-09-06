@@ -137,9 +137,6 @@ methods
         
         % get all handles
         getChildrenHandles(self)
-        
-        % apply default profile right away
-        self.Profile = self.DefaultProfile;
     end
 
     update(self);

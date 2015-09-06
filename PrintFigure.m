@@ -140,7 +140,7 @@ methods
     end
 
     applyParulaMap(self);
-    print(self,szFilename);
+    print(self,szFilename,szNoFix);
     saveFigure(self,szFilename);
     loadFigure(self);
     lock(self);

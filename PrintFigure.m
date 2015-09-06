@@ -103,12 +103,14 @@ properties (Access = public)
     % inch). See README.md for further reading.
     Resolution = 200;
     
+%TODO
     Renderer;
 end
 
 
 
 methods
+    % class constructor
     function self = PrintFigure(hFigure)
         % PrintFigure Instantiate the object for the PrintFigure class
         
@@ -150,6 +152,7 @@ methods
     release(self);
     close(self);
     
+    % class destructor
     function delete(self)
         if isgraphics(self.HandleFigure,'figure'),
             set(self.HandleFigure,'CloseRequestFcn','closereq');

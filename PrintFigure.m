@@ -115,16 +115,15 @@ methods
         % PrintFigure Instantiate the object for the PrintFigure class
         
         if nargin,
-            if isgraphics(hFigure,'figure'),
-                self.HandleFigure = hFigure;
-                
-                childUserData = get(get(hFigure,'Children'),'UserData');
-                if iscell(childUserData) && strcmp(childUserData{1},'boxplot'),
-                    error('Boxplots are not yet supported');
-                end
-            else
-                error(['Argument not recognized! Pass a valid handle to ',...
-                    'an existing figure']);
+            assert(length(hFigure) == 1, 'Pass only ONE figure handle!');
+            assert(isgraphics(hFigure,'figure'),['Argument not recognized! ',...
+                'Pass a valid handle to an existing figure']);
+            
+            self.HandleFigure = hFigure;
+            
+            childUserData = get(get(hFigure,'Children'),'UserData');
+            if iscell(childUserData) && strcmp(childUserData{1},'boxplot'),
+                error('Boxplots are not yet supported');
             end
         else
             self.HandleFigure = gcf;

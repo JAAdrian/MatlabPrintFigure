@@ -68,6 +68,7 @@ properties (Access = private)
     
     FigureProperties = struct();
     
+    bProfileSet = false;
     
     % variable in which the figure is saved if the object should be saved
     SavedFigureFile;

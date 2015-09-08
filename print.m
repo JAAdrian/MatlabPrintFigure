@@ -22,6 +22,21 @@ if nargin < 2 || isempty(szFilename),
 end
 
 
+% handle the case when no profile has been set and the figure is to be
+% printed -> print as seen on the screen
+if ~self.bProfileSet,
+    set(self.HandleFigure,...
+        'PaperPositionMode','auto'...
+        );
+    
+    if strcmp(self.Format,'pdf'),
+        set(self.HandleFigure,...
+            'PaperPosition',...
+            [0, 0, get(self.HandleFigure,'PaperSize')]);
+    end
+end
+
+
 if ismember(self.Format,self.caszPossibleFormatsBitmap),
     print(...
         self.HandleFigure,...

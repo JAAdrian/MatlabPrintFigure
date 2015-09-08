@@ -62,6 +62,8 @@ set(self.LegendHandles,...
     'EdgeColor',self.FigureProperties.LegendEdgeColor,...
     'Interpreter',self.FigureProperties.Interpreter);
 
+self.bProfileSet = true;
+
 % seems awkward, but wait a bit to let all properties have effect.
 % Some times, the papersize doesn't get applied when printed but maybe this
 % isn't the root of the problem

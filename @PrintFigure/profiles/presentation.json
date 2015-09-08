@@ -1,0 +1,20 @@
+{
+    "AxesFontSize":         16,
+    "AxesFontName":         "Helvetica",
+    "AxisLineWidth":        1,
+    "XColor":               [0.3,0.3,0.3],
+    "YColor":               [0.3,0.3,0.3],
+    "TickLength":           [0.01,0.025],
+    "TickDir":              "out",
+    "Box":                  "off",
+    "XGrid":                "off",
+    "YGrid":                "off",
+    "PlotLineWidth":        2,
+    "MarkerSize":           12,
+    "LabelFontName":        "Helvetica",
+    "LabelFontSize":        18,
+    "Interpreter":          "tex",
+    "TickLabelInterpreter": "tex",
+    "PaperPosition":        [0,0,25.4,19.05],
+    "LegendEdgeColor":      [0.3,0.3,0.3]
+}

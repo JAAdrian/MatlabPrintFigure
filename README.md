@@ -48,6 +48,7 @@ Content of `default.json`:
     "PaperPosition":        [0,0,21,13],
     "LegendEdgeColor":      [0.3,0.3,0.3]
 }
+
 ```
 
 ## Applying a Layout Profile
@@ -91,7 +92,13 @@ in dpi.
 In MATLAB versions less than R2014b the old and ugly colormap is used per default. To change the colormap to the recently introduced *Parula* map you can call the following method:
 
 ```matlab
-obj.applyParulaMap;
+obj.parula;
+```
+
+If the new default `matplotlib` colormap is desired use
+
+```matlab
+obj.viridis;
 ```
 
 ## Printing the Figure to Disk

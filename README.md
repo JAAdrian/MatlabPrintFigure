@@ -92,7 +92,7 @@ obj.Format = [];
 
 Usually, when printing figures to disk while using the `'pdf'` format, MATLAB prints a blank DIN A4 page and places the figure somewhere on it. This behaviour is fixed in this implementation.
 
-## Changing the Resolution when Printing Bitmap Graphics
+## Changing the Resolution when Printing Pixel Graphics
 
 When a pixel graphic file format like `png` is desired the pixel resolution can be defined by setting the `Resolution` property of the object by
 
@@ -110,7 +110,7 @@ In MATLAB versions less than R2014b the old and ugly colormap is used per defaul
 obj.parula;
 ```
 
-If the new default `matplotlib` colormap `viridis` is desired use
+If the new default `matplotlib` colormap *viridis* is desired use
 
 ```matlab
 obj.viridis;

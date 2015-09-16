@@ -22,9 +22,8 @@ obj = PrintFigure(hf);
 
 %% apply profile
 
-% obj.Profile = 'paper';
+obj.Profile = 'paper';
 % obj.Profile = 'presentation';
-obj.Profile = 'test';
 
 
 

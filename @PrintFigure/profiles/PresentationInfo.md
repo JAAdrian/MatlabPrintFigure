@@ -1,7 +1,7 @@
 ### Formatting for a Presentation
 
 Consider which slide format you are formatting for.
-For example, if you use the older (but still quasi-standard) 4:3 format the dimenstions are 25.4cm width and 19.05cm height. You would use
+For example, if you use the older (but still quasi-standard) 4:3 format the dimensions are 25.4cm width and 19.05cm height. You would use
 
 ```json
     "PaperPosition": [0 0 25.4 19.05],

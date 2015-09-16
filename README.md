@@ -63,6 +63,8 @@ Content of `default.json`:
     }
 }
 ```
+Note that the standard figure position units are **centimeters** and fixed at the moment!
+
 
 ## Applying a Layout Profile
 

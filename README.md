@@ -1,7 +1,7 @@
 # PrintFigure
 ### A Class for Easy and Reproducible Figure Formatting And Printing in MATLAB
 
-This class deals with the user's constant problem, to save pretty figures to disk in order to use them in a paper or a presentation. Therefore, the user can create a *json* file (which is called **profile** in this context) in which the desired layout values for the figure are set. Using these profiles ensures easy reproducible printing for a given figure.
+This class deals with the user's constant problem, to save pretty figures to disk in order to use them in a paper or a presentation. Therefore, the user can create a [*json*](https://en.wikipedia.org/wiki/JSON) file (which is called **profile** in this context) in which the desired layout values for the figure are set. Using these profiles ensures easy reproducible printing for a given figure.
 
 
 ## Calling the Class
@@ -20,7 +20,9 @@ You can omit the argument which triggers the class to use the current figure (by
 
 The current content of the default profile is listed below.
 
-**TODO: Explain the content**
+As can be seen, the json file consists of a main object which contains a number of sub objects which define the kind of handle to which the containing key/value pair should be applied to. For instance, if the font size of the figure axes should be set to 10pt, the key "FontSize" needs to be in the `axes` object. The key names and the corresponding values **have to match** the respective handle properties and their values. This way, an arbitrary set of key/value pairs can be included in a profile and applied by the `PrintFigure` object.
+
+Each sub object's name is mandatory at the moment, ie. *axes, line, figure, label, legend* cannot be named differently. However, the json file does not need to contain all sub objects.
 
 Content of `default.json`:
 ```json

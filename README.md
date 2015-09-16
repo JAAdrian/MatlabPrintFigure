@@ -1,7 +1,7 @@
 # PrintFigure
 ### A Class for Easy and Reproducible Figure Formatting And Printing in MATLAB
 
-This class deals with the user's constant problem, to save pretty figures to disk in order to use them in a paper or a presentation. Therefore, the user can create a [*json*](https://en.wikipedia.org/wiki/JSON) file (which is called **profile** in this context) in which the desired layout values for the figure are set. Using these profiles ensures easy reproducible printing for a given figure.
+This class deals with the user's constant problem, to save pretty figures to disk in order to use them in a paper or a presentation. Therefore, the user can create a [json file](https://en.wikipedia.org/wiki/JSON) (which is called **profile** in this context) in which the desired layout values for the figure are set. Using these profiles ensures easy reproducible printing for a given figure.
 
 
 ## Calling the Class

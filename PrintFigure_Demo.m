@@ -23,7 +23,8 @@ obj = PrintFigure(hf);
 %% apply profile
 
 % obj.Profile = 'paper';
-obj.Profile = 'presentation';
+% obj.Profile = 'presentation';
+obj.Profile = 'test';
 
 
 
@@ -42,8 +43,8 @@ obj.viridis;
 
 szFilename = 'testfile';
 
-% obj.Format = 'pdf';
-obj.Format = 'png';
+obj.Format = 'pdf';
+% obj.Format = 'png';
 
 obj.print(szFilename);
 

@@ -74,7 +74,7 @@ properties (Access = private)
     SavedFigureFile;
 end
 
-properties ( Access = private, Dependent)
+properties ( Access = private, Dependent, Transient)
     ClassFolder;
 end
 
@@ -175,11 +175,11 @@ methods
             
             printdefaults('Profile',caszProfileNames{:});
         else
-            assert(ismember(szProfile,caszProfileNames),sprintf(['Make sure to use ',...
+            assert(ismember(lower(szProfile),caszProfileNames),sprintf(['Make sure to use ',...
                 'an available profile for formatting the figure!\n',...
                 'See obj.Profile = ''help'' for a list of available profiles']));
             
-            self.Profile = szProfile;
+            self.Profile = lower(szProfile);
             
             update(self);
         end

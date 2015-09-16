@@ -15,41 +15,22 @@ function [] = setPropertyValues(self)
 % Updated:  <>
 % 
 
+self.FigureProperties = readProfile(self.ClassFolder,self.Profile);
 
-% set defaults if the custom profile lacks some properties
-self.FigureProperties = readProfile(self.ClassFolder,self.DefaultProfile);
+self.FigureProperties.figure.PaperSize = get(self.HandleFigure,'PaperSize');
 
-
-
-stProfile = readProfile(self.ClassFolder,self.Profile);
-
-caszFieldnames = fieldnames(stProfile);
-numFields      = length(caszFieldnames);
-for aaField = 1:numFields,
-    currField = stProfile.(caszFieldnames{aaField});
-    
-    if iscell(currField),
-        currField = cell2mat(currField);
-    end
-    
-    self.FigureProperties.(caszFieldnames{aaField}) = currField;
+if ~isfield(self.FigureProperties.figure,'PaperUnits'),
+    self.FigureProperties.figure.PaperUnits = self.DefaultPaperUnits;
 end
-
-
-
-
-self.FigureProperties.PaperSize = get(self.HandleFigure,'PaperSize');
+if ~isfield(self.FigureProperties.figure,'PaperPosition'),
+    self.FigureProperties.figure.PaperPosition = self.DefaultPaperPosition;
+end
 
 if strcmp(self.Format,'pdf'),
-    self.FigureProperties.PaperSize = self.FigureProperties.PaperPosition([3,4]);
+    self.FigureProperties.figure.PaperSize = self.FigureProperties.figure.PaperPosition([3,4]);
 end
 
-if ~isfield(self.FigureProperties,'PaperUnits'),
-    self.FigureProperties.PaperUnits = self.DefaultPaperUnits;
-end
-if ~isfield(self.FigureProperties,'PaperPosition'),
-    self.FigureProperties.PaperPosition = self.DefaultPaperPosition;
-end
+
 
 end
 

@@ -9,8 +9,8 @@
         "XGrid":                "off",
         "YGrid":                "on",
         "TickLabelInterpreter": "tex",
-        "XColor":        [0.3,0.3,0.3],
-        "YColor":        [0.3,0.3,0.3]
+        "XColor":               [0.3,0.3,0.3],
+        "YColor":               [0.3,0.3,0.3]
     },
     
     "line": {
@@ -23,8 +23,8 @@
     },
     
     "label": {
-        "FontName": "Times",
-        "FontSize": 14,
+        "FontName":    "Times",
+        "FontSize":    14,
         "Interpreter": "tex"
     },
     

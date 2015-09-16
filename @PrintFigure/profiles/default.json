@@ -1,20 +1,36 @@
 {
-    "AxesFontSize":         10,
-    "AxesFontName":         "Times",
-    "AxisLineWidth":        0.75,
-    "XColor":               [0.3,0.3,0.3],
-    "YColor":               [0.3,0.3,0.3],
-    "TickLength":           [0.02,0.02],
-    "TickDir":              "out",
-    "Box":                  "off",
-    "XGrid":                "off",
-    "YGrid":                "on",
-    "PlotLineWidth":        1,
-    "MarkerSize":           8,
-    "LabelFontName":        "Times",
-    "LabelFontSize":        14,
-    "Interpreter":          "tex",
-    "TickLabelInterpreter": "tex",
-    "PaperPosition":        [0,0,21,13],
-    "LegendEdgeColor":      [0.3,0.3,0.3]
+    "axes": {
+        "FontSize":             10,
+        "FontName":             "Times",
+        "LineWidth":            0.75,
+        "TickLength":           [0.02,0.02],
+        "TickDir":              "out",
+        "Box":                  "off",
+        "XGrid":                "off",
+        "YGrid":                "on",
+        "TickLabelInterpreter": "tex",
+        "XColor":               [0.3,0.3,0.3],
+        "YColor":               [0.3,0.3,0.3]
+    },
+    
+    "line": {
+        "LineWidth":  1,
+        "MarkerSize": 8
+    },
+    
+    "figure": {
+        "PaperPosition": [0,0,21,13]
+    },
+    
+    "label": {
+        "FontName":    "Times",
+        "FontSize":    14,
+        "Interpreter": "tex"
+    },
+    
+    "legend": {
+        "EdgeColor":   [0.3,0.3,0.3],
+        "Interpreter": "tex",
+        "FontSize":    14
+    }
 }

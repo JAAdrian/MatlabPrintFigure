@@ -1,18 +1,18 @@
 function [] = update(self)
 %Apply all properties of the profile to the figure
 % -------------------------------------------------------------------------
-% 
+%
 % Usage: [] = update(self)
-% 
+%
 %   Input:   ---------
-% 
+%
 %  Output:   ---------
-% 
-% 
+%
+%
 % Author :  J.-A. Adrian (JA) <jens-alrik.adrian AT jade-hs.de>
 % Date   :  17-Jun-2015 15:55:26
 % Updated:  <>
-% 
+%
 
 
 
@@ -39,9 +39,7 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.HandleFigure,...
-                    caszProperties{bbProperty},...
-                    currVal);
+                set(self.HandleFigure, caszProperties{bbProperty}, currVal);
             end
             
         case 'axes',
@@ -50,7 +48,7 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.AxesHandles,caszProperties{bbProperty},currVal);
+                set(self.AxesHandles, caszProperties{bbProperty}, currVal);
             end
             
         case 'line',
@@ -61,8 +59,8 @@ for aaChild = 1:numChildren,
                 
                 for ccHandle = 1:length(self.PlotHandles),
                     if ~strcmpi(get(self.PlotHandles(ccHandle),'Type'),self.caszBadPlotTypes),
-                        set(self.PlotHandles(ccHandle),...
-                            caszProperties{bbProperty},...
+                        set(self.PlotHandles(ccHandle), ...
+                            caszProperties{bbProperty}, ...
                             currVal);
                     end
                 end
@@ -74,9 +72,7 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.LabelHandles,...
-                    caszProperties{bbProperty},...
-                    currVal);
+                set(self.LabelHandles, caszProperties{bbProperty}, currVal);
             end
             
         case 'legend'
@@ -85,55 +81,11 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.LegendHandles,...
-                    caszProperties{bbProperty},...
-                    currVal);
+                set(self.LegendHandles, caszProperties{bbProperty}, urrVal);
             end
     end
 end
     
-% set(self.HandleFigure,...
-%     'PaperUnits',self.FigureProperties.PaperUnits,...
-%     'PaperPosition',self.FigureProperties.PaperPosition,...
-%     'PaperPositionMode','manual',...
-%     'PaperSize',self.FigureProperties.PaperSize...
-%     );
-% 
-% set(self.AxesHandles,...
-%     'FontSize',self.FigureProperties.AxesFontSize,...
-%     'FontName',self.FigureProperties.AxesFontName,...
-%     'LineWidth',self.FigureProperties.AxisLineWidth,...
-%     'TickDir',self.FigureProperties.TickDir,...
-%     'TickLength',self.FigureProperties.TickLength,...
-%     'Box',self.FigureProperties.Box,...
-%     'XGrid',self.FigureProperties.XGrid,...
-%     'YGrid',self.FigureProperties.YGrid,...
-%     'XColor',self.FigureProperties.XColor,...
-%     'YColor',self.FigureProperties.YColor,...
-%     'TickLabelInterpreter',self.FigureProperties.TickLabelInterpreter);
-% 
-% for aaHandle = 1:length(self.PlotHandles),
-%     if ~strcmpi(get(self.PlotHandles(aaHandle),'Type'),self.caszBadPlotTypes),
-%         set(self.PlotHandles(aaHandle),...
-%             'LineWidth',self.FigureProperties.PlotLineWidth,...
-%             'MarkerSize',self.FigureProperties.MarkerSize);
-%     end
-% end
-% 
-% set(self.LabelHandles,...
-%     'FontName',self.FigureProperties.LabelFontName,...
-%     'FontSize',self.FigureProperties.LabelFontSize,...
-%     'Interpreter',self.FigureProperties.Interpreter);
-% set(self.TitleHandles,...
-%     'FontName',self.FigureProperties.LabelFontName,...
-%     'FontSize',self.FigureProperties.LabelFontSize,...
-%     'Interpreter',self.FigureProperties.Interpreter);
-% 
-% set(self.LegendHandles,...
-%     'FontSize',self.FigureProperties.LabelFontSize,...
-%     'EdgeColor',self.FigureProperties.LegendEdgeColor,...
-%     'Interpreter',self.FigureProperties.Interpreter);
-
 self.bProfileSet = true;
 
 % seems awkward, but wait a bit to let all properties have effect.

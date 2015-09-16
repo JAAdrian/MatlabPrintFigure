@@ -20,35 +20,46 @@ You can omit the argument which triggers the class to use the current figure (by
 
 The current content of the default profile is listed below.
 
-If new properties should be applied,
-1. add the property in the `default.json` file
-2. add the property in `update.m`
-
-This is a less-than-ideal solution and must be improved in the process of development.
+**TODO: Explain the content**
 
 Content of `default.json`:
 ```json
 {
-    "AxesFontSize":         10,
-    "AxesFontName":         "Times",
-    "AxisLineWidth":        0.75,
-    "XColor":               [0.3,0.3,0.3],
-    "YColor":               [0.3,0.3,0.3],
-    "TickLength":           [0.02,0.02],
-    "TickDir":              "out",
-    "Box":                  "off",
-    "XGrid":                "off",
-    "YGrid":                "on",
-    "PlotLineWidth":        1,
-    "MarkerSize":           8,
-    "LabelFontName":        "Times",
-    "LabelFontSize":        14,
-    "Interpreter":          "tex",
-    "TickLabelInterpreter": "tex",
-    "PaperPosition":        [0,0,21,13],
-    "LegendEdgeColor":      [0.3,0.3,0.3]
+    "axes": {
+        "FontSize":             10,
+        "FontName":             "Times",
+        "LineWidth":            0.75,
+        "TickLength":           [0.02,0.02],
+        "TickDir":              "out",
+        "Box":                  "off",
+        "XGrid":                "off",
+        "YGrid":                "on",
+        "TickLabelInterpreter": "tex",
+        "XColor":               [0.3,0.3,0.3],
+        "YColor":               [0.3,0.3,0.3]
+    },
+    
+    "line": {
+        "LineWidth":  1,
+        "MarkerSize": 8
+    },
+    
+    "figure": {
+        "PaperPosition": [0,0,21,13]
+    },
+    
+    "label": {
+        "FontName":    "Times",
+        "FontSize":    14,
+        "Interpreter": "tex"
+    },
+    
+    "legend": {
+        "EdgeColor":   [0.3,0.3,0.3],
+        "Interpreter": "tex",
+        "FontSize":    14
+    }
 }
-
 ```
 
 ## Applying a Layout Profile
@@ -184,6 +195,6 @@ obj.lock;
 
 # Todo Notes
 
-- [ ] improve the handling of new properties
+- [x] improve the handling of new properties
 - [ ] improve the documentation (comments and help for each function)
  

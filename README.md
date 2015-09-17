@@ -197,8 +197,9 @@ obj.lock;
 ```
 
 
-# Todo Notes
+# TODO Notes
 
 - [x] improve the handling of new properties
-- [ ] improve the documentation (comments and help for each function)
+- [ ] improve documentation (comments and help for each function). Ongoing effort...
+- [ ] let the PaperUnits be selectable in the profile. The convention at the moment is centimeters
  

@@ -81,7 +81,7 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.LegendHandles, caszProperties{bbProperty}, urrVal);
+                set(self.LegendHandles, caszProperties{bbProperty}, currVal);
             end
     end
 end

@@ -51,8 +51,6 @@ properties (Constant, Hidden)
         'meta',...
         };
     
-    caszBadPlotTypes = {'histogram','image'};
-    
     DefaultProfile = 'default';
     
     DefaultPaperUnits    = 'centimeters';
@@ -97,7 +95,7 @@ properties (Access = public)
 %Format File Format in which the Figure should be Saved
     % String containing the file format (without the dot!). Defaults to
     % 'pdf'. See README.md for further reading.
-    Format     = 'pdf';
+    Format = 'pdf';
     
 %Resolution Resolution of the File if a Bitmap Graphic is Desired
     % Integer for the resolution of a bitmap graphic in dpi (dots per
@@ -121,11 +119,6 @@ methods
                 'Pass a valid handle to an existing figure']);
             
             self.HandleFigure = hFigure;
-            
-            childUserData = get(get(hFigure,'Children'),'UserData');
-            if iscell(childUserData) && strcmp(childUserData{1},'boxplot'),
-                error('Boxplots are not yet supported');
-            end
         else
             self.HandleFigure = gcf;
         end

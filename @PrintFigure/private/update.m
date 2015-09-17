@@ -39,7 +39,9 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.HandleFigure, caszProperties{bbProperty}, currVal);
+                if all(isprop(self.HandleFigure,caszProperties{bbProperty})),
+                    set(self.HandleFigure, caszProperties{bbProperty}, currVal);
+                end
             end
             
         case 'axes',
@@ -48,7 +50,9 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.AxesHandles, caszProperties{bbProperty}, currVal);
+                if all(isprop(self.AxesHandles,caszProperties{bbProperty})),
+                    set(self.AxesHandles, caszProperties{bbProperty}, currVal);
+                end
             end
             
         case 'line',
@@ -58,7 +62,7 @@ for aaChild = 1:numChildren,
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
                 for ccHandle = 1:length(self.PlotHandles),
-                    if ~strcmpi(get(self.PlotHandles(ccHandle),'Type'),self.caszBadPlotTypes),
+                    if isprop(self.PlotHandles(ccHandle),caszProperties{bbProperty}),
                         set(self.PlotHandles(ccHandle), ...
                             caszProperties{bbProperty}, ...
                             currVal);
@@ -72,7 +76,9 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.LabelHandles, caszProperties{bbProperty}, currVal);
+                if all(isprop(self.LabelHandles,caszProperties{bbProperty})),
+                    set(self.LabelHandles, caszProperties{bbProperty}, currVal);
+                end
             end
             
         case 'legend'
@@ -81,7 +87,9 @@ for aaChild = 1:numChildren,
                 
                 if iscell(currVal), currVal = cell2mat(currVal);    end
                 
-                set(self.LegendHandles, caszProperties{bbProperty}, currVal);
+                if all(isprop(self.LegendHandles,caszProperties{bbProperty})),
+                    set(self.LegendHandles, caszProperties{bbProperty}, currVal);
+                end
             end
     end
 end

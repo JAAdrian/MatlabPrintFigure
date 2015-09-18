@@ -1,4 +1,4 @@
-classdef PrintFigure < handle
+classdef PrintFigure < handle & matlab.System
 %PrintFigure A Class for Easy and Reproducible Figure Formatting And Printing in MATLAB
 % -------------------------------------------------------------------------
 % 
@@ -57,7 +57,12 @@ properties (Constant, Hidden)
     DefaultPaperPosition = [0 0 21 13];
 end
 
-properties (Access = private)
+properties ( Transient, Hidden )
+    ProfileSet = matlab.system.StringSet(returnProfiles);
+    FormatSet  = matlab.system.StringSet(returnFormats);
+end
+
+properties ( Access = private )
     AxesHandles;
     PlotHandles;
     TitleHandles;
@@ -72,12 +77,12 @@ properties (Access = private)
     SavedFigureFile;
 end
 
-properties ( Access = private, Dependent, Transient)
+properties ( Access = private, Dependent, Transient )
     ClassFolder;
 end
 
 
-properties (SetAccess = private, GetAccess = public)
+properties ( SetAccess = private, GetAccess = public )
 %HandleFigure Handle to the desired Figure
     % Handle to the figure which has either been passed to the constructor
     % or acquired by 'gcf'
@@ -85,7 +90,7 @@ properties (SetAccess = private, GetAccess = public)
 end
 
 
-properties (Access = public)
+properties ( Access = public )
 %Profile Profile of the Format Settings which are to be Applied to the Figure
     % String of the profile's filename (e.g. 'paper'). The profile must be
     % located in the 'profiles' directory in the class as a json file. See
@@ -154,11 +159,7 @@ methods
     %%%%%%%%%%%%% setter/getter methods %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     function [] = set.Profile(self,szProfile)
-        stProfileFiles = listFiles(fullfile(self.ClassFolder,'profiles'),...
-            '*.json',0); %#ok<MCSUP>
-        caszProfileNames = {stProfileFiles.name};
-        
-        caszProfileNames = removeFileparts(caszProfileNames);
+        caszProfileNames = returnProfiles();
         
         if strcmpi(szProfile,'help') || isempty(szProfile),
             caIdx = strfind(caszProfileNames,self.DefaultProfile);
@@ -277,6 +278,55 @@ for aaName = 1:numNames,
     caszOutNames{aaName} = szName;
 end
 
+end
+
+function [caszFormats] = returnFormats()
+caszPossibleFormatsBitmap = {...
+    'jpeg',...
+    'png',...
+    'tiff',...
+    'tiffn',...
+    'bmpmono',...
+    'bmp',...
+    'bmp16m',...
+    'bmp256',...
+    'hdf',...
+    'pbm',...
+    'pbmraw',...
+    'pcxmono',...
+    'pcx24b',...
+    'pcx256',...
+    'pcx16',...
+    'pgmraw',...
+    'ppm',...
+    'ppmraw',...
+    };
+
+caszPossibleFormatsVector = {...
+    'pdf',... <- must be at this position!
+    'eps',...
+    'epsc',...
+    'eps2',...
+    'epsc2',...
+    'svg',...
+    'ps',...
+    'psc',...
+    'ps2',...
+    'psc2',...
+    'meta',...
+    };
+
+caszFormats = [caszPossibleFormatsVector, caszPossibleFormatsBitmap].';
+end
+
+function [caszProfileNames] = returnProfiles()
+szFolder = which(mfilename);
+szFolder = fileparts(szFolder);
+
+stProfileFiles   = listFiles(fullfile(szFolder,'profiles'),'*.json',0);
+caszProfileNames = {stProfileFiles.name};
+
+caszProfileNames = removeFileparts(caszProfileNames);
 end
 
 

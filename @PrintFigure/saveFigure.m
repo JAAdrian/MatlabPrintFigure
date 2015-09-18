@@ -20,7 +20,7 @@ savefig(szFilename);
 szFigName = [szFilename,'.fig'];
 
 fid = fopen(szFigName);
-self.SavedFigureFile = fread(fid,inf,'uint8');
+self.SavedFigureFile = fread(fid,inf,'uint8',0,'l');
 fclose(fid);
 delete(szFigName);
 

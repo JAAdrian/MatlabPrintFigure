@@ -96,6 +96,9 @@ obj = PrintFigure(hf);
 obj.print('test_noprofile');
 
 
+%% delete the objects
+delete(obj);
+delete(FigObj);
 
 
 

@@ -25,6 +25,9 @@ fclose(fid);
 self.HandleFigure = openfig(szFigName);
 delete(szFigName);
 
+setRenderer(self);
+lockFigure(self);
+
 getChildrenHandles(self);
 
 

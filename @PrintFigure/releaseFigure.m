@@ -1,8 +1,8 @@
-function [] = lock(self)
-%Locks the figure to prevent it from being deleted
+function [] = releaseFigure(self)
+%Releases the figure to be able to be closed
 % -------------------------------------------------------------------------
 % 
-% Usage: [] = lock(self)
+% Usage: [] = release(self)
 % 
 %   Input:   ---------
 % 
@@ -10,24 +10,17 @@ function [] = lock(self)
 % 
 % 
 % Author :  J.-A. Adrian (JA) <jens-alrik.adrian AT jade-hs.de>
-% Date   :  17-Jun-2015 15:58:39
+% Date   :  17-Jun-2015 15:59:02
 % Updated:  <>
 % 
 
 
 
-set(self.HandleFigure,'CloseRequestFcn',@CloseReqFun);
-
+if isgraphics(self.HandleFigure,'figure'),
+    set(self.HandleFigure,'CloseRequestFcn','closereq');
 end
 
 
-
-function [] = CloseReqFun(handleobj,callbackdata)
-
-warning(sprintf(['The figure cannot be closed until the object is ',...
-    'deleted [''clear'' or ''delete(obj)''] or ''obj.close'' is called.\n',...
-    'However, ''delete(handle_to_your_figure)'' will always work...'])); %#ok<SPWRN>
-end
 
 
 
@@ -64,4 +57,4 @@ end
 % ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 % THE POSSIBILITY OF SUCH DAMAGE.
 
-% End of file: lock.m
+% End of file: release.m

@@ -24,7 +24,7 @@ self.SavedFigureFile = fread(fid,inf,'uint8');
 fclose(fid);
 delete(szFigName);
 
-self.release;
+releaseFigure(self);
 self.HandleFigure = [];
 
 FigObj = self; %#ok<NASGU>

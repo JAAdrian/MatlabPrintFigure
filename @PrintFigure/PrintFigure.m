@@ -122,24 +122,24 @@ methods
         else
             self.HandleFigure = gcf;
         end
-
+        
         % lock the figure to prevent it from being closed
-        lock(self);
-
+        lockFigure(self);
+        
         % get the current renderer
         setRenderer(self);
         
         % get all handles
         getChildrenHandles(self)
     end
-
+    
     parula(self);
     viridis(self);
     print(self,szFilename,szNoFix);
     saveFigure(self,szFilename);
     loadFigure(self);
-    lock(self);
-    release(self);
+    lockFigure(self);
+    releaseFigure(self);
     close(self);
     
     % class destructor

@@ -1,0 +1,36 @@
+{
+    "Vector": [
+        "pdf",
+        "eps",
+        "epsc",
+        "eps2",
+        "epsc2",
+        "svg",
+        "ps",
+        "psc",
+        "ps2",
+        "psc2",
+        "meta"
+    ],
+    
+    "Bitmap": [
+        "jpeg",
+        "png",
+        "tiff",
+        "tiffn",
+        "bmpmono",
+        "bmp",
+        "bmp16m",
+        "bmp256",
+        "hdf",
+        "pbm",
+        "pbmraw",
+        "pcxmono",
+        "pcx24b",
+        "pcx256",
+        "pcx16",
+        "pgmraw",
+        "ppm",
+        "ppmraw"
+    ]
+}

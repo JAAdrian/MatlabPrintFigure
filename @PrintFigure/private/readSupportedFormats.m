@@ -1,9 +1,9 @@
-function [] = setRenderer(self)
-%SETRENDERER <purpose in one line!>
+function [caszVector,caszBitmap] = readSupportedFormats(self)
+%READSUPPORTEDFORMATS <purpose in one line!>
 % -------------------------------------------------------------------------
 % <Detailed description of the function>
 % 
-% Usage: [y] = setRenderer(input)
+% Usage: [caszVector,caszBitmap] = readSupportedFormats(self)
 % 
 %   Input:   ---------
 % 
@@ -11,20 +11,15 @@ function [] = setRenderer(self)
 % 
 % 
 % Author :  J.-A. Adrian (JA) <jens-alrik.adrian AT jade-hs.de>
-% Date   :  28-Jul-2015 13:38:41
+% Date   :  20-Sep-2015 22:31:27
 % Updated:  <>
 % 
 
 
-if ismember(self.Format,self.VectorFormats),
-    self.Renderer = 'painters';
-elseif ismember(self.Format,self.BitmapFormats),
-    self.Renderer = 'opengl';
-else
-    error('An error occured setting the correct renderer');
-end
+stFormats = parsejson(fileread(fullfile(self.ClassFolder,'suppformats.json')));
 
-
+caszVector = stFormats.Vector.';
+caszBitmap = stFormats.Bitmap.';
 
 
 
@@ -61,3 +56,5 @@ end
 % LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 % NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 % SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+% End of file: readSupportedFormats.m

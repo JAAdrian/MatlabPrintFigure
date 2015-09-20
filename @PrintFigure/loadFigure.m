@@ -19,7 +19,7 @@ function [] = loadFigure(self)
 szFigName = 'tmp.fig';
 
 fid = fopen(szFigName,'w');
-fwrite(fid,self.SavedFigureFile,'uint8');
+fwrite(fid,self.SavedFigureFile,'uint8',0,'l');
 fclose(fid);
 
 self.HandleFigure = openfig(szFigName);

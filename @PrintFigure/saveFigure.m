@@ -16,7 +16,7 @@ function [] = saveFigure(self,szFilename)
 
 
 
-savefig(szFilename);
+savefig(self.HandleFigure,szFilename);
 szFigName = [szFilename,'.fig'];
 
 fid = fopen(szFigName);
@@ -27,9 +27,9 @@ delete(szFigName);
 releaseFigure(self);
 self.HandleFigure = [];
 
-FigObj = self; %#ok<NASGU>
+FigObj = self;
 save(szFilename,'FigObj');
-clear FigObj;
+delete(FigObj);
 
 
 

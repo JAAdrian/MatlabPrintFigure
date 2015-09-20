@@ -23,7 +23,7 @@ properties (Constant, Hidden)
 end
 
 properties ( Transient, Hidden )
-    ProfileSet = matlab.system.StringSet(returnProfilesForStringSet());
+    ProfileSet = matlab.system.StringSet(returnProfiles());
     FormatSet  = matlab.system.StringSet(returnFormatsForStringSet());
 end
 
@@ -126,7 +126,7 @@ methods
     %%%%%%%%%%%%% setter/getter methods %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     function [] = set.Profile(self,szProfile)
-        caszProfileNames = returnProfilesForStringSet();
+        caszProfileNames = returnProfiles();
         
         if strcmpi(szProfile,'help') || isempty(szProfile),
             caIdx = strfind(caszProfileNames,self.DefaultProfile);

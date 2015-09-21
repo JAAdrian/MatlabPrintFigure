@@ -162,6 +162,8 @@ methods
     end
 end
 
+% These methods are mandatory to be able to save and load private/protected
+% properties using the superclass matlab.System
 methods (Access = protected)
     function s = saveObjectImpl(self)
         % Call the base class method

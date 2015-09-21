@@ -15,6 +15,10 @@ function [] = loadFigure(self)
 % 
 
 
+hf = gcf;
+if isempty(get(hf,'Children')),
+    delete(hf);
+end
 
 szFigName = 'tmp.fig';
 

@@ -30,11 +30,18 @@ obj.Profile = 'paper';
 
 
 
-
 %% apply different colormap
 
 obj.viridis;
-% obj.parula;  % <- for older MATLABs
+% obj.parula;  % <- for older MATLABs which do not come with this colormap
+               %    an alternative implementation is used
+
+
+
+%% set the background to 'transparent' (EXPERIMENTAL!! Only eps at the moment)
+
+obj.Transparent = true;
+
 
 
 
@@ -46,7 +53,7 @@ szFilename = 'testfile';
 % obj.Renderer = 'painters';
 
 obj.Format   = 'png';
-obj.Renderer = 'opengl';
+% obj.Renderer = 'opengl';
 
 obj.print(szFilename);
 

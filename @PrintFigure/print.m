@@ -21,6 +21,12 @@ if nargin < 2 || isempty(szFilename),
     error('Pass a filename for the figure to be printed!');
 end
 
+% check whether the figure should have transparent background and apply if
+% desired
+if self.Transparent,
+    set(self.AxesHandles,'Color','none');
+end
+
 
 % handle the case when no profile has been set and the figure is to be
 % printed -> print as seen on the screen
@@ -61,6 +67,10 @@ else
         end
         
         fixPSlinestyle(fullfile(szPath,[szFilename,szExt]));
+        
+        if self.Transparent,
+            transparent_eps(self,fullfile(szPath,[szFilename,szExt]));
+        end
     end
 end
 

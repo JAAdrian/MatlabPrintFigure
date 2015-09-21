@@ -205,4 +205,4 @@ obj.lockFigure;
 - [x] improve the handling of new properties
 - [ ] improve documentation (comments and help for each function). Ongoing effort...
 - [ ] let the PaperUnits be selectable in the profile. The convention at the moment is centimeters
- 
+- [ ] enable transparent background for both bitmap and vector graphics [fig. color = 'none' and the eps method]

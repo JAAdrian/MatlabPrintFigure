@@ -25,6 +25,7 @@ end
 properties ( Transient, Hidden )
     ProfileSet = matlab.system.StringSet(returnProfiles());
     FormatSet  = matlab.system.StringSet(returnFormatsForStringSet());
+    RendererSet = matlab.system.StringSet({'opengl','painters'});
 end
 
 properties ( Access = private )
@@ -181,18 +182,7 @@ methods
     end
     
     function [] = set.Renderer(self,szRenderer)
-        assert(...
-            isa(szRenderer,'char'),...
-            ['Pass a string containing either ',...
-            '''opengl'' or ''painters''']);
-        
-        if all(~strcmpi(szRenderer,{'opengl','painters'})),
-            warning(sprintf(['Renderer not recognized. ',...
-                'Choose an option from either ''opengl'' or ''painters''. \n',...
-                'Keeping previous property value.'])); %#ok<SPWRN>
-        else
-            self.Renderer = lower(szRenderer);
-        end
+        self.Renderer = lower(szRenderer);
     end
     
     

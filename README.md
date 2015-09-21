@@ -63,7 +63,7 @@ Content of `default.json`:
     }
 }
 ```
-Note that the standard figure position units are **centimeters** and fixed at the moment!
+Note that the standard figure position units are **centimeters** and are fixed at the moment!
 
 
 ## Applying a Layout Profile
@@ -78,12 +78,14 @@ obj.Profile = 'default';
 % ...
 ```
 
-To list all available profiles call
+Tab completion is enabled while selecting an available profile by pressing `<Tab>` after typing the first quote. For example
 
 ```matlab
-obj.Profile = 'help'; % or
-obj.Profile = [];
+obj.Profile = '<Tab>
 ```
+
+to get a list of all available profiles in the profile folder.
+ 
 
 The `PrintFigure` class uses `parsejson.m` by [bastibe](https://github.com/bastibe/transplant) which is part of a Python bridge to MATLAB.
 
@@ -98,14 +100,15 @@ obj.Format = 'pdf';   % this is the default
 % ...
 ```
 
-To list all available print file formats call
+Tab completion is enabled while selecting an available format by pressing `<Tab>` after typing the first quote. For example
 
 ```matlab
-obj.Format = 'help'; % or
-obj.Format = [];
+obj.Format = '<Tab>
 ```
 
-Usually, when printing figures to disk while using the `'pdf'` format, MATLAB prints a blank DIN A4 page and places the figure somewhere on it. This behaviour is fixed in this implementation.
+to get a list of all available formats for printing.
+
+Usually, when printing figures to disk while using the `'pdf'` format, MATLAB prints a blank DIN A4 page and places the figure somewhere on the page. This behavior is fixed in this implementation.
 
 ## Changing the Resolution when Printing Pixel Graphics
 
@@ -164,7 +167,7 @@ The class's method `loadFigure` will recreate the figure in its last state with 
 FigObj.loadFigure;
 ```
 
-The figure is then manipulable with the object's properties and methods.
+The figure is then manipulable with the object's properties and methods as shown above.
 
 ## Closing the Figure
 
@@ -185,7 +188,7 @@ delete(obj)
 To release the figure lock without closing it, the `release` method can be called
 
 ```matlab
-obj.release;
+obj.releaseFigure;
 ```
 
 ### Locking the Figure
@@ -193,7 +196,7 @@ obj.release;
 To lock the figure again, the `lock` method can be called
 
 ```matlab
-obj.lock;
+obj.lockFigure;
 ```
 
 

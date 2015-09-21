@@ -42,8 +42,11 @@ obj.viridis;
 
 szFilename = 'testfile';
 
-obj.Format = 'pdf';
-% obj.Format = 'png';
+% obj.Format   = 'pdf';
+% obj.Renderer = 'painters';
+
+obj.Format   = 'png';
+obj.Renderer = 'opengl';
 
 obj.print(szFilename);
 

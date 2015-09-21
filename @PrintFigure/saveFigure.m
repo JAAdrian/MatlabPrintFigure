@@ -15,14 +15,12 @@ function [] = saveFigure(self,szFilename)
 % 
 
 
-
-savefig(self.HandleFigure,szFilename);
-szFigName = [szFilename,'.fig'];
+szFigName = [tempname,'.fig'];
+savefig(self.HandleFigure,szFigName);
 
 fid = fopen(szFigName);
 self.SavedFigureFile = fread(fid,inf,'uint8',0,'l');
 fclose(fid);
-delete(szFigName);
 
 releaseFigure(self);
 self.HandleFigure = [];

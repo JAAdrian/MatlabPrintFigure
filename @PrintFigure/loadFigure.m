@@ -20,14 +20,13 @@ if isempty(get(hf,'Children')),
     delete(hf);
 end
 
-szFigName = 'tmp.fig';
+szFigName = [tempname, '.fig'];
 
 fid = fopen(szFigName,'w');
 fwrite(fid,self.SavedFigureFile,'uint8',0,'l');
 fclose(fid);
 
 self.HandleFigure = openfig(szFigName);
-delete(szFigName);
 
 setRenderer(self);
 lockFigure(self);

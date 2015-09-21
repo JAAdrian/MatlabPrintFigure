@@ -16,7 +16,8 @@ function [] = parula(self)
 
 
 
-if exist('parula','file'),
+% if exist('parula','file'),
+if using_hg2(self.HandleFigure),
     colormap(self.HandleFigure,parula);
 else
     % different implementation if MATLAB version < R2014b

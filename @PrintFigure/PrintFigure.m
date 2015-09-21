@@ -23,8 +23,8 @@ properties (Constant, Hidden)
 end
 
 properties ( Transient, Hidden )
-    ProfileSet = matlab.system.StringSet(returnProfiles());
-    FormatSet  = matlab.system.StringSet(returnFormatsForStringSet());
+    ProfileSet  = matlab.system.StringSet(returnProfiles());
+    FormatSet   = matlab.system.StringSet(returnFormatsForStringSet());
     RendererSet = matlab.system.StringSet({'opengl','painters'});
 end
 
@@ -127,40 +127,15 @@ methods
     %%%%%%%%%%%%% setter/getter methods %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     function [] = set.Profile(self,szProfile)
-        caszProfileNames = returnProfiles();
+        self.Profile = lower(szProfile);
         
-        if strcmpi(szProfile,'help') || isempty(szProfile),
-            caIdx = strfind(caszProfileNames,self.DefaultProfile);
-            idx   = find(~cellfun(@isempty,caIdx));
-            caszProfileNames = [caszProfileNames(idx) caszProfileNames];
-            caszProfileNames(idx+1) = [];
-            
-            printdefaults('Profile',caszProfileNames{:});
-        else
-            assert(ismember(lower(szProfile),caszProfileNames),sprintf(['Make sure to use ',...
-                'an available profile for formatting the figure!\n',...
-                'See obj.Profile = ''help'' for a list of available profiles']));
-            
-            self.Profile = lower(szProfile);
-            
-            update(self);
-        end
+        update(self);
     end
     
     function [] = set.Format(self,szFormat)
-        caszAllFormats = [self.VectorFormats; self.BitmapFormats]; %#ok<MCSUP>
+        self.Format = lower(szFormat);
         
-        if strcmpi(szFormat,'help') || isempty(szFormat),
-            printdefaults('Format',caszAllFormats{:});
-        else
-            assert(ismember(szFormat,caszAllFormats),sprintf(['Make sure to use ',...
-                'a supported format for printing!\n',...
-                'See obj.Format = ''help'' for a list of supported formats']));
-            
-            self.Format = lower(szFormat);
-            
-            setRenderer(self);
-        end
+        setRenderer(self);
     end
     
     function [caszFormats] = get.BitmapFormats(self)
@@ -180,11 +155,6 @@ methods
         
         self.Resolution = iResolution;
     end
-    
-    function [] = set.Renderer(self,szRenderer)
-        self.Renderer = lower(szRenderer);
-    end
-    
     
     function [szFolder] = get.ClassFolder(self) %#ok<MANU>
         szFolder = which(mfilename);
@@ -232,25 +202,6 @@ end
 
 
 
-
-
-function printdefaults(varargin)
-
-
-szDefaultsString = sprintf('''%s'' Options:\n{''%s''} |',varargin{1},varargin{2});
-
-for aaArg = 3:nargin,
-    szDefaultsString = sprintf('%s ''%s'' |',szDefaultsString,varargin{aaArg});
-    
-    if ~mod(aaArg,9),
-        szDefaultsString = sprintf('%s\n',szDefaultsString);
-    end
-end
-szDefaultsString = [szDefaultsString(1:end-1), '\n'];
-
-fprintf(szDefaultsString);
-
-end
 
 
 function [caszOutNames] = removeFileparts(caszInNames)

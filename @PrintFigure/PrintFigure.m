@@ -202,6 +202,26 @@ methods
     end
 end
 
+methods (Access = protected)
+    function s = saveObjectImpl(self)
+        % Call the base class method
+        s = saveObjectImpl@matlab.System(self);
+        
+        % Save the protected & private properties
+        s.bProfileSet     = self.bProfileSet;
+        s.SavedFigureFile = self.SavedFigureFile;
+    end
+    
+    function loadObjectImpl(self,s,wasLocked)
+        % Load protected and private properties
+        self.bProfileSet     = s.bProfileSet;
+        self.SavedFigureFile = s.SavedFigureFile;
+        
+        % Call base class method to load public properties
+        loadObjectImpl@matlab.System(self,s,wasLocked);
+    end
+end
+
 
 
 

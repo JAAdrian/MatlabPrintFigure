@@ -16,8 +16,6 @@ classdef PrintFigure < handle & matlab.System
 
 
 properties (Constant, Hidden)
-    DefaultProfile = 'default';
-    
     DefaultPaperUnits    = 'centimeters';
     DefaultPaperPosition = [0 0 21 13];
 end

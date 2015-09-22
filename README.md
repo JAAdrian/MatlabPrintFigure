@@ -84,10 +84,26 @@ Tab completion is enabled while selecting an available profile by pressing `<Tab
 obj.Profile = '<Tab>
 ```
 
-to get a list of all available profiles in the profile folder.
+to get a list of all available profiles in the profile folder. The `PrintFigure` class uses `parsejson.m` by [bastibe](https://github.com/bastibe/transplant) which is part of a Python bridge to MATLAB.
+
+**Note!**
+
+> If you encounter the problem that a newly created profile of you won't be found by the class, stating the following message:
+> ```matlab
+> Error using matlab.system.StringSet/findMatch
+> profilename is not a valid setting for the Profile property.
+> ```
+>
+> simply call
+> ```matlab
+> clear classes
+> ```
+> and start over. This time, the class/object will rescan the profiles folder for new profiles
+
+
  
 
-The `PrintFigure` class uses `parsejson.m` by [bastibe](https://github.com/bastibe/transplant) which is part of a Python bridge to MATLAB.
+
 
 ## Changing the File Format for Printing
 

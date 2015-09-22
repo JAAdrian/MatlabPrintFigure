@@ -63,7 +63,7 @@ Content of `paper.json`:
     }
 }
 ```
-Note that the standard figure position units are **centimeters** and are fixed at the moment!
+Note that the default figure position units *PaperUnits* are **centimeters** by default but can, of course, be overridden by a profile. Also, if no *PaperPosition* is defined in a profile, the default of 21x13 cm (w x h) is used to match DIN A4 width and have a reasonable height.
 
 
 ## Applying a Layout Profile
@@ -130,7 +130,7 @@ When a pixel graphic file format like `png` is desired the pixel resolution can 
 obj.Resolution = 200; % this is the default
 ```
 
-in dots per inch (dpi). This property has no clear effect if a vector graphic format is used.
+in dots per inch (dpi). This property has no clear effect if a vector graphic format is used and is therefore only applied for bitmap graphics
 
 ## Applying the Recently Introduced Parula or Viridis Colormap
 

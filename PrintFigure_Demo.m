@@ -1,4 +1,4 @@
-% <purpose of this file>
+% This is a demo file for the PrintFigure class
 %
 % Author :  J.-A. Adrian (JA) <jens-alrik.adrian AT jade-hs.de>
 % Date   :  06-Sep-2015 18:59:20

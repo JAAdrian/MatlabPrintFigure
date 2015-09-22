@@ -1,9 +1,8 @@
 function [] = setPropertyValues(self)
-%SETPROPERTYVALUES <purpose in one line!>
+%SETPROPERTYVALUES read the properties and set defaults if they're not set
 % -------------------------------------------------------------------------
-% <Detailed description of the function>
 % 
-% Usage: [y] = setPropertyValues(input)
+% Usage: [] = setPropertyValues(self)
 % 
 %   Input:   ---------
 % 
@@ -15,7 +14,7 @@ function [] = setPropertyValues(self)
 % Updated:  <>
 % 
 
-self.FigureProperties = readProfile(self.ClassFolder,self.Profile);
+self.FigureProperties = readProfile(fullfile(self.PathToProfile,[self.Profile, '.json']));
 
 self.FigureProperties.figure.PaperSize = get(self.HandleFigure,'PaperSize');
 
@@ -35,11 +34,8 @@ end
 end
 
 
-function [stProfile] = readProfile(szPath,szProfile)
-
-szProfileFile = fullfile(szPath,'profiles',[szProfile, '.json']);
-
-stProfile = parsejson(fileread(szProfileFile));
+function [stProfile] = readProfile(szProfile)
+stProfile = parsejson(fileread(szProfile));
 end
 
 

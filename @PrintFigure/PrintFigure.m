@@ -21,7 +21,6 @@ properties (Constant, Hidden)
 end
 
 properties ( Transient, Hidden )
-    ProfileSet  = matlab.system.StringSet(returnProfiles());
     FormatSet   = matlab.system.StringSet(returnFormatsForStringSet());
     RendererSet = matlab.system.StringSet({'opengl','painters'});
 end
@@ -35,6 +34,7 @@ properties ( Access = private )
     
     FigureProperties = struct();
     
+    PathToProfile;
     bProfileSet = false;
     
     % variable in which the figure is saved if the object should be saved
@@ -130,6 +130,25 @@ methods
     %%%%%%%%%%%%% setter/getter methods %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     function [] = set.Profile(self,szProfile)
+        [szPath,szProfile,szExt] = fileparts(szProfile);
+        if isempty(szExt),
+            szExt = '.json';
+        end
+        self.PathToProfile = szPath; %#ok<MCSUP>
+        
+        % if the profile is not in pwd, search in the class' profile folder
+        if ~exist([self.PathToProfile,szProfile,szExt],'file') && ...
+                exist(fullfile(self.ClassFolder, 'profiles',...
+                [self.PathToProfile,szProfile,szExt]),'file'), %#ok<MCSUP>
+            
+            self.PathToProfile = fullfile(self.ClassFolder, 'profiles'); %#ok<MCSUP>
+        end
+        
+        % assert that the file exists
+        assert(logical(exist(fullfile(self.PathToProfile,[szProfile,szExt]),'file')),...
+            sprintf(['%s.json not found! Make sure that the file exists ',...
+            'and the path is correct'],szProfile)); %#ok<MCSUP>
+        
         self.Profile = szProfile;
         
         update(self);
@@ -242,15 +261,7 @@ stFormats = parsejson(fileread('suppformats.json'));
 caszFormats = [stFormats.Vector, stFormats.Bitmap].';
 end
 
-function [caszProfileNames] = returnProfiles()
-szFolder = which(mfilename);
-szFolder = fileparts(szFolder);
 
-stProfileFiles   = listFiles(fullfile(szFolder,'profiles'),'*.json',0);
-caszProfileNames = {stProfileFiles.name};
-
-caszProfileNames = removeFileparts(caszProfileNames);
-end
 
 
 

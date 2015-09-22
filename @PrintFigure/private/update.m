@@ -20,7 +20,7 @@ set(self.HandleFigure,'PaperUnits',self.DefaultPaperUnits);
 
 setPropertyValues(self);
 
-% get all "children", ie. categories like 'axes' or 'figure'
+% get all "children", ie. categories like 'axes' or 'figure', etc.
 caszChildrenNames = fieldnames(self.FigureProperties);
 numChildren       = length(caszChildrenNames);
 

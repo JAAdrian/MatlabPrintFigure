@@ -132,7 +132,7 @@ methods
     %%%%%%%%%%%%% setter/getter methods %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     function [] = set.Profile(self,szProfile)
-        self.Profile = lower(szProfile);
+        self.Profile = szProfile;
         
         update(self);
     end

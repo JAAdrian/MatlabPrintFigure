@@ -8,9 +8,12 @@ clear;
 close all;
 
 hf = figure;
-imagesc(peaks);
+imagesc(peaks); hold on;
+plot(peaks);
 colorbar;
-
+legend('hello');
+xlabel('x label');
+ylabel('y label');
 
 obj = PrintFigure(hf);
 % or
@@ -26,6 +29,9 @@ obj.Profile = 'paper';
 % obj.Profile = 'presentation';
 
 
+%% use tight figure frame if desired
+
+obj.Tight = true;
 
 
 
@@ -40,7 +46,7 @@ obj.viridis;
 
 %% set the background to 'transparent' (EXPERIMENTAL!! Only eps at the moment)
 
-obj.Transparent = true;
+% obj.Transparent = true;
 
 
 
@@ -49,11 +55,8 @@ obj.Transparent = true;
 
 szFilename = 'testfile';
 
-% obj.Format   = 'pdf';
-% obj.Renderer = 'painters';
-
-obj.Format   = 'png';
-% obj.Renderer = 'opengl';
+% obj.Format = 'pdf';
+obj.Format = 'png';
 
 obj.print(szFilename);
 

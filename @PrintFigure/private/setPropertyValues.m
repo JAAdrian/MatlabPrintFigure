@@ -21,6 +21,8 @@ self.FigureProperties.figure.PaperSize = get(self.HandleFigure,'PaperSize');
 if ~isfield(self.FigureProperties.figure,'PaperUnits'),
     self.FigureProperties.figure.PaperUnits = self.DefaultPaperUnits;
 end
+
+self.FigureProperties.figure.PaperPositionMode = 'manual';
 if ~isfield(self.FigureProperties.figure,'PaperPosition'),
     self.FigureProperties.figure.PaperPosition = self.DefaultPaperPosition;
 end

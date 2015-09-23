@@ -6,6 +6,7 @@
         "TickLength":           [0.02,0.02],
         "TickDir":              "out",
         "YGrid":                "on",
+        "Box":                  "off",
         "TickLabelInterpreter": "tex",
         "XColor":               [0.3,0.3,0.3],
         "YColor":               [0.3,0.3,0.3]

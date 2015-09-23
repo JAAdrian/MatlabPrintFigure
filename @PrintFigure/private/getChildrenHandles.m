@@ -17,8 +17,10 @@ function [] = getChildrenHandles(self)
 
 
 
-self.AxesHandles   = cell2array(findobj(self.HandleFigure,'Type','axes'));
+self.AxesHandles   = cell2array(findobj(self.HandleFigure,...
+    'Type','axes','-and','-not','tag','legend'));
 self.PlotHandles   = cell2array(get(self.AxesHandles,'Children'));
+
 self.TitleHandles  = cell2array(get(self.AxesHandles,'Title'));
 
 vXLabelHandles     = cell2array(get(self.AxesHandles,'XLabel'));

@@ -81,6 +81,17 @@ for aaChild = 1:numChildren,
                 end
             end
             
+        case 'title',
+            for bbProperty = 1:numProperties,
+                currVal = self.FigureProperties.(caszChildrenNames{aaChild}).(caszProperties{bbProperty});
+                
+                if iscell(currVal), currVal = cell2mat(currVal);    end
+                
+                if all(isprop(self.LabelHandles,caszProperties{bbProperty})),
+                    set(self.LabelHandles, caszProperties{bbProperty}, currVal);
+                end
+            end
+            
         case 'legend'
             for bbProperty = 1:numProperties,
                 currVal = self.FigureProperties.(caszChildrenNames{aaChild}).(caszProperties{bbProperty});

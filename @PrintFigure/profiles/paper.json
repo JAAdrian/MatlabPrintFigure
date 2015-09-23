@@ -31,5 +31,11 @@
         "EdgeColor":   [0.3,0.3,0.3],
         "Interpreter": "tex",
         "FontSize":    14
+    },
+    
+    "title": {
+        "FontName":    "Times",
+        "FontSize":    14,
+        "Interpreter": "tex"
     }
 }

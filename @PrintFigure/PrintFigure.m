@@ -199,6 +199,10 @@ methods
             'Pass a bool true|false or a corresponding integer 0|1');
         
         self.Tight = bTightOrNot;
+        
+        if self.Tight,
+            tightFigure(self);
+        end
     end
     
     
@@ -240,6 +244,7 @@ methods (Access = private)
     setPropertyValues(self);
     fixPSlinestyle(varargin);
     transparent_eps(self,szFilename);
+    tightFigure(self);
     
     stProps = parsejson(szJsonString);
     stFiles = listFiles(szCurDir,szFileMask,iRecursionDepth);

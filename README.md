@@ -122,6 +122,18 @@ to get a list of all available formats for printing.
 
 Usually, when printing figures to disk while using the `'pdf'` format, MATLAB prints a blank DIN A4 page and places the figure somewhere on the page. This behavior is fixed in this implementation.
 
+## Removing Unwanted White Margins from the Printed Figure
+
+Usually, MATLAB places white margins around the axes of a plot. This can be undesirable if the figure is used, for instance, in a publication.
+To remove the white margins, call
+
+```matlab
+obj.Tight = true
+```
+
+before printing.
+The default for this property is `false`.
+
 ## Changing the Resolution when Printing Pixel Graphics
 
 When a pixel graphic file format like `png` is desired the pixel resolution can be defined by setting the `Resolution` property of the object by

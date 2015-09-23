@@ -1,18 +1,18 @@
 function [] = print(self,szFilename,szNoFix)
 %Prints the figure to disk
 % -------------------------------------------------------------------------
-% 
+%
 % Usage: [] = print(self,szFilename,szNoFix)
-% 
+%
 %   Input:   ---------
-% 
+%
 %  Output:   ---------
-% 
-% 
+%
+%
 % Author :  J.-A. Adrian (JA) <jens-alrik.adrian AT jade-hs.de>
 % Date   :  17-Jun-2015 15:56:40
 % Updated:  <>
-% 
+%
 
 if nargin < 3 || isempty(szNoFix),
     szNoFix = false;
@@ -20,13 +20,6 @@ end
 if nargin < 2 || isempty(szFilename),
     error('Pass a filename for the figure to be printed!');
 end
-
-% check whether the figure should have transparent background and apply if
-% desired
-if self.Transparent,
-    set(self.AxesHandles,'Color','none');
-end
-
 
 % handle the case when no profile has been set and the figure is to be
 % printed -> print as seen on the screen
@@ -42,6 +35,75 @@ if ~self.bProfileSet,
     end
 end
 
+% check whether the figure should have transparent background and apply if
+% desired
+if self.Transparent,
+    set(self.AxesHandles,'Color','none');
+end
+
+% Check whether a tight inset is desired.
+% This code is adapted from
+% http://www.mathworks.com/matlabcentral/fileexchange/34024-get-rid-of-the-white-margin-in-saveas-output/content/saveTightFigure.m
+if self.Tight,
+    set(self.HandleFigure,'Units','centimeter');
+    
+    vOrigBottomLeft = get(self.HandleFigure,'Position');
+    vOrigBottomLeft = vOrigBottomLeft(1:2);
+    set(self.HandleFigure,'Position',get(self.HandleFigure,'PaperPosition'));
+    
+    % figure position
+    boxFigure = get(self.HandleFigure,'position');
+    
+    x      = 1;
+    y      = 2;
+    width  = 3;
+    height = 4;
+    xmax   = 3;
+    ymax   = 4;
+    
+    % compute the tightest box that includes all axes
+    boxTightest = [Inf Inf -Inf -Inf]; % left bottom right top
+    for aaHandle = 1:numel(self.AxesHandles),
+        set(self.AxesHandles(aaHandle), 'units', 'centimeters');
+        
+        boxAxes  = get(self.AxesHandles(aaHandle), 'position');
+        boxTight = get(self.AxesHandles(aaHandle), 'tightinset');
+        
+        % get position and convert to left, bottom, right, top
+        boxAxesFixed = ...
+            [boxAxes(x), boxAxes(y), boxAxes(x)+boxAxes(width), boxAxes(y)+boxAxes(height)] ...
+            + boxTight.*[-1 -1 1 1];
+        
+        boxTightest(x)    = min(boxTightest(x),    boxAxesFixed(x));
+        boxTightest(y)    = min(boxTightest(y),    boxAxesFixed(y));
+        boxTightest(xmax) = max(boxTightest(xmax), boxAxesFixed(xmax));
+        boxTightest(ymax) = max(boxTightest(ymax), boxAxesFixed(ymax));
+    end
+    
+    % convert back to left, bottom, width, height
+    boxTightest = [...
+        boxTightest(x),                   boxTightest(y), ...
+        boxTightest(xmax)-boxTightest(x), boxTightest(ymax)-boxTightest(y)];
+    
+    % move all axes to bottom left
+    for aaHandle = 1:numel(self.AxesHandles),
+        boxAxes = get(self.AxesHandles(aaHandle), 'position');
+        
+        % this is where the magic happens
+        % move to bottom left and adapt the width and height accordingly to
+        % prevent the axes to get cropped
+        set(self.AxesHandles(aaHandle), 'position', ...
+            [
+            boxAxes(x) - boxTightest(x), ...
+            boxAxes(y) - boxTightest(y), ...
+            boxAxes(width)  + boxFigure(width)  - boxTightest(width), ...
+            boxAxes(height) + boxFigure(height) - boxTightest(height) ...
+            ]);
+    end
+    
+    vFigPosition = get(self.HandleFigure,'Position');
+    set(self.HandleFigure,'Position',[vOrigBottomLeft, vFigPosition(3:4)])
+end
 
 if ismember(self.Format,self.BitmapFormats),
     print(...

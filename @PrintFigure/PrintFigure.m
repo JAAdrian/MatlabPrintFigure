@@ -75,6 +75,9 @@ properties ( Access = public )
     
 %TODO
     Renderer;
+    
+%TODO
+    Tight = false;
 end
 
 properties ( Hidden )
@@ -186,6 +189,16 @@ methods
             'Pass a bool true|false or a corresponding integer 0|1');
         
         self.Transparent = bTrueOrFalse;
+    end
+    
+    function [] = set.Tight(self,bTightOrNot)
+        assert(numel(bTightOrNot) == 1,...
+            ['Pass exactly ONE bool true|false or corresponding integer 0|1 ',...
+            'indicating if tight inset is desired']);
+        assert(islogical(bTightOrNot) || ismember(bTightOrNot,[0,1]),...
+            'Pass a bool true|false or a corresponding integer 0|1');
+        
+        self.Tight = bTightOrNot;
     end
     
     

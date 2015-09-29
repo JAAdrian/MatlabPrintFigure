@@ -15,7 +15,8 @@ function [] = tightFigure(self)
 % 
 
 % dirty hack!
-% first check if axes labels are set. If not set empty ones
+% first check if axes labels are set. If not, set empty ones to make a bit
+% place next to the axes
 for aaHandle = 1:numel(self.LabelHandles),
     if isempty(get(self.LabelHandles(aaHandle), 'String')),
         set(self.LabelHandles(aaHandle),'String',' ');
@@ -65,15 +66,16 @@ for aaHandle = 1:numel(self.AxesHandles),
 end
 
 % convert back to left, bottom, width, height
-boxTightest = [...
-    boxTightest(x),                   boxTightest(y), ...
-    boxTightest(xmax)-boxTightest(x), boxTightest(ymax)-boxTightest(y)];
+boxTightest = [
+    boxTightest(x),                   boxTightest(y),...
+    boxTightest(xmax)-boxTightest(x), boxTightest(ymax)-boxTightest(y)
+    ];
 
 % move all axes to bottom left
 for aaHandle = 1:numel(self.AxesHandles),
     boxAxes = get(self.AxesHandles(aaHandle), 'position');
     
-    % this is where the magic happens
+    % this is where the magic happens:
     % move to bottom left and adapt the width and height accordingly to
     % prevent the axes to be cropped
     set(self.AxesHandles(aaHandle), 'position', ...

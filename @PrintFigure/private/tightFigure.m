@@ -71,6 +71,9 @@ boxTightest = [
     boxTightest(xmax)-boxTightest(x), boxTightest(ymax)-boxTightest(y)
     ];
 
+% just a hint (1%) more width and height to prevent cropping
+boxTightest([3,4]) = boxTightest([3,4]) * 1.01;
+
 % move all axes to bottom left
 for aaHandle = 1:numel(self.AxesHandles),
     boxAxes = get(self.AxesHandles(aaHandle), 'position');

@@ -73,11 +73,8 @@ properties ( Access = public )
     % inch). See README.md for further reading.
     Resolution = 200;
     
-%TODO
+%Renderer Renderer of the Printing Engine
     Renderer;
-    
-%TODO
-    Tight = false;
 end
 
 properties ( Hidden )
@@ -175,7 +172,7 @@ methods
         if iResolution > 600,
             warning('Resolutions of >600 might lead to very large filesizes!');
         end
-        assert(iResolution >0, 'Pass a value greater than zero for the resolution!');
+        assert(iResolution > 0, 'Pass a value greater than zero for the resolution!');
         assert(rem(iResolution,1) == 0, 'Pass an integer value for the resolution!');
         
         self.Resolution = iResolution;
@@ -190,21 +187,6 @@ methods
         
         self.Transparent = bTrueOrFalse;
     end
-    
-    function [] = set.Tight(self,bTightOrNot)
-        assert(numel(bTightOrNot) == 1,...
-            ['Pass exactly ONE bool true|false or corresponding integer 0|1 ',...
-            'indicating if tight inset is desired']);
-        assert(islogical(bTightOrNot) || ismember(bTightOrNot,[0,1]),...
-            'Pass a bool true|false or a corresponding integer 0|1');
-        
-        self.Tight = bTightOrNot;
-        
-        if self.Tight,
-            tightFigure(self);
-        end
-    end
-    
     
     
     function [szFolder] = get.ClassFolder(self) %#ok<MANU>
@@ -244,7 +226,6 @@ methods (Access = private)
     setPropertyValues(self);
     fixPSlinestyle(varargin);
     transparent_eps(self,szFilename);
-    tightFigure(self);
     
     stProps = parsejson(szJsonString);
     stFiles = listFiles(szCurDir,szFileMask,iRecursionDepth);
@@ -259,19 +240,6 @@ end
 
 
 
-
-function [caszOutNames] = removeFileparts(caszInNames)
-
-numNames = length(caszInNames);
-
-caszOutNames = cell(size(caszInNames));
-for aaName = 1:numNames,
-    [dummy,szName] = fileparts(caszInNames{aaName}); %#ok<ASGLU>
-    
-    caszOutNames{aaName} = szName;
-end
-
-end
 
 function [caszFormats] = returnFormatsForStringSet()
 stFormats = parsejson(fileread('suppformats.json'));

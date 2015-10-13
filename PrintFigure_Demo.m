@@ -29,11 +29,6 @@ obj.Profile = 'paper';
 % obj.Profile = 'presentation';
 
 
-%% use tight figure frame if desired
-
-obj.Tight = true;
-
-
 
 
 %% apply different colormap

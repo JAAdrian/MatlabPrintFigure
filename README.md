@@ -125,14 +125,22 @@ Usually, when printing figures to disk while using the `'pdf'` format, MATLAB pr
 ## Removing Unwanted White Margins from the Printed Figure
 
 Usually, MATLAB places white margins around the axes of a plot. This can be undesirable if the figure is used, for instance, in a publication.
-To remove the white margins, call
+To remove the white margins, at this state of development you have to call an external function which takes care of that.
+For instance, [subtightplot](http://www.mathworks.com/matlabcentral/fileexchange/39664-subtightplot) on Mathworks FEX can be recommended, especially if you are dealing with several subplots.
+If you are dealing with a single axes use the function as follows in conjunction with `PrintFigure`
 
 ```matlab
-obj.Tight = true
-```
+subplot = @(m,n,p) subtightplot(m,n,p,marg_h,marg_w,varargin)
 
-before printing.
-The default for this property is `false`.
+hf = figure;
+subplot(1,1,1);
+plot(peaks);
+
+obj = PrintFigure(hf);
+obj.Profile = 'paper';
+obj.Format = 'pdf';
+obj.print('myfilename')
+```
 
 ## Changing the Resolution when Printing Pixel Graphics
 

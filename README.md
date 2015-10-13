@@ -130,7 +130,9 @@ For instance, [subtightplot](http://www.mathworks.com/matlabcentral/fileexchange
 If you are dealing with a single axes use the function as follows in conjunction with `PrintFigure`
 
 ```matlab
-subplot = @(m,n,p) subtightplot(m,n,p,marg_h,marg_w,varargin)
+subplot = @(m,n,p) subtightplot(m,n,p,marg_h,marg_w,varargin);
+% or if you want to use default values
+subplot = @(m,n,p) subtightplot(m,n,p);
 
 hf = figure;
 subplot(1,1,1);
@@ -141,6 +143,8 @@ obj.Profile = 'paper';
 obj.Format = 'pdf';
 obj.print('myfilename')
 ```
+
+
 
 ## Changing the Resolution when Printing Pixel Graphics
 

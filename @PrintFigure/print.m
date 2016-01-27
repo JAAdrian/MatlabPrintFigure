@@ -41,6 +41,12 @@ if self.Transparent,
     set(self.AxesHandles,'Color','none');
 end
 
+
+bNeedsSpace = ~all(~self.ExtraSpace);
+if bNeedsSpace,
+    mOrigPos = handleExtraSpace(self);
+end
+
 if ismember(self.Format,self.BitmapFormats),
     print(...
         self.HandleFigure,...
@@ -72,6 +78,9 @@ else
     end
 end
 
+if bNeedsSpace,
+    handleExtraSpace(self,mOrigPos);
+end
 
 end
 

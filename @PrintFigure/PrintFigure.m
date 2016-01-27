@@ -80,6 +80,7 @@ end
 properties ( Hidden )
     %TODO, still experimental
     Transparent = false;
+    ExtraSpace = [0, 0, 0, 0];
 end
 
 
@@ -231,6 +232,8 @@ methods (Access = private)
     stFiles = listFiles(szCurDir,szFileMask,iRecursionDepth);
     map     = paruly(n);
     tf      = using_hg2(fig);
+    
+    [mOriginalPosition] = handleExtraSpace(self,mOriginalPosition);
     
     [caszVector,caszBitmap] = readSupportedFormats(self);
 end

@@ -167,14 +167,16 @@ methods
         [caszFormats] = readSupportedFormats(self);
     end
     
-    function [] = set.Resolution(self,iResolution)
-        if iResolution > 600,
+    function [] = set.Resolution(self, resolution)
+        classes = {'numeric'};
+        attributes = {'scalar', 'nonzero', 'nonnegative', 'integer'};
+        validateattributes(resolution, classes, attributes);
+        
+        if resolution > 600,
             warning('Resolutions of >600 might lead to very large filesizes!');
         end
-        assert(iResolution > 0, 'Pass a value greater than zero for the resolution!');
-        assert(rem(iResolution,1) == 0, 'Pass an integer value for the resolution!');
         
-        self.Resolution = iResolution;
+        self.Resolution = resolution;
     end
     
     function [] = set.ExtraSpace(self, extraSpaceIn)

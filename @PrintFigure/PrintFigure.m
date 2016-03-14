@@ -75,11 +75,11 @@ properties ( Access = public )
     
 %Renderer Renderer of the Printing Engine
     Renderer;
-end
-
-properties ( Hidden )
+    
+%ExtraSpace Stretches axes positions to prevent or introduce white margins when printed
     ExtraSpace = [0, 0, 0, 0];
 end
+
 
 
 
@@ -175,6 +175,13 @@ methods
         assert(rem(iResolution,1) == 0, 'Pass an integer value for the resolution!');
         
         self.Resolution = iResolution;
+    end
+    
+    function [] = set.ExtraSpace(self, extraSpaceIn)
+        validateattributes(extraSpaceIn, {'numeric'}, {'vector', 'numel', 4});
+        
+        self.ExtraSpace = extraSpaceIn;
+        handleExtraSpace(self);
     end
     
     

@@ -1,9 +1,9 @@
-function [mOrigPosOut] = handleExtraSpace(self,mOrigPosIn)
+function [] = handleExtraSpace(self)
 %HANDLEEXTRASPACE <purpose in one line!>
 % -------------------------------------------------------------------------
 % <Detailed description of the function>
 %
-% Usage: [mOriginalPosition] = handleExtraSpace(self,mOriginalPosition)
+% Usage: [] = handleExtraSpace(self)
 %
 %   Input:   ---------
 %
@@ -15,32 +15,23 @@ function [mOrigPosOut] = handleExtraSpace(self,mOrigPosIn)
 % Updated:  <>
 %
 
-if nargin < 2 || isempty(mOrigPosIn),
-    mOrigPosIn = nan;
-end
-
 
 numAxes     = length(self.AxesHandles);
-mOrigPosOut = zeros(numAxes,4);
 for aaAxes = 1:numAxes,
     szUnit = get(self.AxesHandles(aaAxes),'Units');
     set(self.AxesHandles(aaAxes),'Units','normalized');
     
-    if all(isnan(mOrigPosIn)),
-        vPosition = get(self.AxesHandles(aaAxes),'Position');
-        
-        set(self.AxesHandles(aaAxes),'Position',[...
-            vPosition(1) + self.ExtraSpace(1),...
-            vPosition(2) + self.ExtraSpace(2),...
-            vPosition(3) + self.ExtraSpace(3),...
-            vPosition(4) + self.ExtraSpace(4)...
-            ]...
-            );
-        
-        mOrigPosOut(aaAxes,:) = vPosition;
-    else
-        set(self.AxesHandles(aaAxes),'Position',mOrigPosIn(aaAxes,:));
-    end
+    
+    vPosition = get(self.AxesHandles(aaAxes),'Position');
+    
+    set(self.AxesHandles(aaAxes),'Position',[...
+        vPosition(1) + self.ExtraSpace(1),...
+        vPosition(2) + self.ExtraSpace(2),...
+        vPosition(3) + self.ExtraSpace(3),...
+        vPosition(4) + self.ExtraSpace(4)...
+        ]...
+        );
+
     
     set(self.AxesHandles(aaAxes),'Units',szUnit);
 end

@@ -36,10 +36,10 @@ if ~self.bProfileSet,
 end
 
 
-bNeedsSpace = ~all(~self.ExtraSpace);
-if bNeedsSpace,
-    mOrigPos = handleExtraSpace(self);
-end
+% bNeedsSpace = ~all(~self.ExtraSpace);
+% if bNeedsSpace,
+%     mOrigPos = handleExtraSpace(self);
+% end
 
 if ismember(self.Format,self.BitmapFormats),
     print(...
@@ -68,9 +68,9 @@ else
     end
 end
 
-if bNeedsSpace,
-    handleExtraSpace(self,mOrigPos);
-end
+% if bNeedsSpace,
+%     handleExtraSpace(self,mOrigPos);
+% end
 
 end
 

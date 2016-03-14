@@ -35,12 +35,6 @@ if ~self.bProfileSet,
     end
 end
 
-% check whether the figure should have transparent background and apply if
-% desired
-if self.Transparent,
-    set(self.AxesHandles,'Color','none');
-end
-
 
 bNeedsSpace = ~all(~self.ExtraSpace);
 if bNeedsSpace,
@@ -71,10 +65,6 @@ else
         end
         
         fixPSlinestyle(fullfile(szPath,[szFilename,szExt]));
-        
-        if self.Transparent,
-            transparent_eps(self,fullfile(szPath,[szFilename,szExt]));
-        end
     end
 end
 

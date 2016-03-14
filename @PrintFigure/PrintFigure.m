@@ -78,8 +78,6 @@ properties ( Access = public )
 end
 
 properties ( Hidden )
-    %TODO, still experimental
-    Transparent = false;
     ExtraSpace = [0, 0, 0, 0];
 end
 
@@ -179,16 +177,6 @@ methods
         self.Resolution = iResolution;
     end
     
-    function [] = set.Transparent(self,bTrueOrFalse)
-        assert(numel(bTrueOrFalse) == 1,...
-            ['Pass exactly ONE bool true|false or corresponding integer 0|1 ',...
-            'indicating desired Transparency']);
-        assert(islogical(bTrueOrFalse) || ismember(bTrueOrFalse,[0,1]),...
-            'Pass a bool true|false or a corresponding integer 0|1');
-        
-        self.Transparent = bTrueOrFalse;
-    end
-    
     
     function [szFolder] = get.ClassFolder(self) %#ok<MANU>
         szFolder = which(mfilename);
@@ -226,7 +214,6 @@ methods (Access = private)
     getChildrenHandles(self);
     setPropertyValues(self);
     fixPSlinestyle(varargin);
-    transparent_eps(self,szFilename);
     
     stProps = parsejson(szJsonString);
     stFiles = listFiles(szCurDir,szFileMask,iRecursionDepth);

@@ -57,7 +57,7 @@ else
         szFilename...
         );
     
-    if ~strcmpi(szNoFix,'nofix') && ismember(self.Format,{'eps','epsc','eps2','epsc2'}),
+    if ismember(self.Format,{'eps','epsc','eps2','epsc2'}) && strcmpi(szNoFix,'fix'),
         % If the format was eps or epsc: fix the linestyles
         [szPath,szFilename,szExt] = fileparts(szFilename);
         if isempty(szExt),

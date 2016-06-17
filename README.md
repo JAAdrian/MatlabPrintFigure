@@ -241,3 +241,7 @@ obj.lockFigure;
 - [x] improve the handling of new properties
 - [ ] improve documentation (comments and help for each function). Ongoing effort...
 - [ ] enable transparent background for both bitmap and vector graphics [fig. color = 'none' and the eps method]
+
+# License
+
+The code is licensed under BSD 3-Clause license.

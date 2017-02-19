@@ -151,7 +151,7 @@ obj.print('myfilename')
 When a pixel graphic file format like `png` is desired the pixel resolution can be defined by setting the `Resolution` property of the object by
 
 ```matlab
-obj.Resolution = 200; % this is the default
+obj.Resolution = 300; % this is the default
 ```
 
 in dots per inch (dpi). This property has no clear effect if a vector graphic format is used and is therefore only applied for bitmap graphics
@@ -204,36 +204,6 @@ FigObj.loadFigure;
 ```
 
 The figure is then manipulable with the object's properties and methods as shown above.
-
-## Closing the Figure
-
-By default, the figure is locked to prevent it from being closed by the user while manipulating the figure using the object. To close the figure while the object exists, the `close` method can be called
-
-```matlab
-obj.close;
-```
-
-or, alternatively, the object can be destroyed by
-
-```matlab
-delete(obj)
-```
-
-### Releasing the Figure
-
-To release the figure lock without closing it, the `release` method can be called
-
-```matlab
-obj.releaseFigure;
-```
-
-### Locking the Figure
-
-To lock the figure again, the `lock` method can be called
-
-```matlab
-obj.lockFigure;
-```
 
 
 # TODO Notes

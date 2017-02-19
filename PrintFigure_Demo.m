@@ -39,12 +39,6 @@ obj.viridis;
 
 
 
-%% set the background to 'transparent' (EXPERIMENTAL!! Only eps at the moment)
-
-% obj.Transparent = true;
-
-
-
 
 %% set file format and print
 
@@ -102,11 +96,6 @@ obj = PrintFigure(hf);
 % pause;
 
 obj.print('test_noprofile');
-
-
-%% delete the objects
-delete(obj);
-delete(FigObj);
 
 
 

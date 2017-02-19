@@ -71,7 +71,7 @@ properties ( Access = public )
 %Resolution Resolution of the File if a Bitmap Graphic is Desired
     % Integer for the resolution of a bitmap graphic in dpi (dots per
     % inch). See README.md for further reading.
-    Resolution = 200;
+    Resolution = 300;
     
 %Renderer Renderer of the Printing Engine
     Renderer;
@@ -98,9 +98,6 @@ methods
             self.HandleFigure = gcf;
         end
         
-        % lock the figure to prevent it from being closed
-        lockFigure(self);
-        
         % get the current renderer
         setRenderer(self);
         
@@ -113,16 +110,7 @@ methods
     print(self,szFilename,szNoFix);
     saveFigure(self,szFilename);
     loadFigure(self);
-    lockFigure(self);
-    releaseFigure(self);
     close(self);
-    
-    % class destructor
-    function delete(self)
-        if isgraphics(self.HandleFigure,'figure'),
-            set(self.HandleFigure,'CloseRequestFcn','closereq');
-        end
-    end
     
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

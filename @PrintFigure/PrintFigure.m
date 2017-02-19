@@ -98,9 +98,6 @@ methods
             self.HandleFigure = gcf;
         end
         
-        % lock the figure to prevent it from being closed
-        lockFigure(self);
-        
         % get the current renderer
         setRenderer(self);
         
@@ -113,16 +110,7 @@ methods
     print(self,szFilename,szNoFix);
     saveFigure(self,szFilename);
     loadFigure(self);
-    lockFigure(self);
-    releaseFigure(self);
     close(self);
-    
-    % class destructor
-    function delete(self)
-        if isgraphics(self.HandleFigure,'figure'),
-            set(self.HandleFigure,'CloseRequestFcn','closereq');
-        end
-    end
     
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

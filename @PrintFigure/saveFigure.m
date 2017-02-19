@@ -22,7 +22,6 @@ fid = fopen(szFigName);
 self.SavedFigureFile = fread(fid,inf,'uint8',0,'l');
 fclose(fid);
 
-releaseFigure(self);
 self.HandleFigure = [];
 
 FigObj = self;

@@ -71,7 +71,7 @@ properties ( Access = public )
 %Resolution Resolution of the File if a Bitmap Graphic is Desired
     % Integer for the resolution of a bitmap graphic in dpi (dots per
     % inch). See README.md for further reading.
-    Resolution = 200;
+    Resolution = 300;
     
 %Renderer Renderer of the Printing Engine
     Renderer;
